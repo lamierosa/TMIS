@@ -11,15 +11,15 @@ import com.badlogic.gdx.scenes.scene2d.ui.TextButton;
 
 public class LoadingUI extends Table {
     private final TextButton txtBtn;
-//    private final ProgressBar progressBar;
+    private final ProgressBar progressBar;
     private final TextButton pressAnyKeyBtn;
 
     public LoadingUI(final Main context) {
         super(context.getSkin());
         setFillParent(true);
 
-//        progressBar = new ProgressBar(0,1,0.01f,false, getSkin());
-//        progressBar.setAnimateDuration(1);
+        progressBar = new ProgressBar(0,1,0.01f,false, getSkin());
+        progressBar.setAnimateDuration(1);
 
         txtBtn = new TextButton("[Red]Loading...", getSkin(), "huge");
         txtBtn.getLabel().setWrap(true);
@@ -37,7 +37,7 @@ public class LoadingUI extends Table {
 
         add(pressAnyKeyBtn).expand().fill().center().row();
         add(txtBtn).expandX().fillX().bottom().row();
-//        add(progressBar).expandX().fillX().bottom().pad(20,25,20,25);
+        add(progressBar).expandX().fillX().bottom().pad(20,25,20,25);
         bottom();
     }
 

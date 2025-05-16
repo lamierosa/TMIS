@@ -10,6 +10,7 @@ import com.LAMIEGames.TMIS.ecs.components.B2DComponent;
 import com.LAMIEGames.TMIS.ecs.components.PlayerComponent;
 import com.LAMIEGames.TMIS.ecs.system.AnimationSystem;
 import com.LAMIEGames.TMIS.ecs.system.PlayerAnimationSystem;
+import com.LAMIEGames.TMIS.ecs.system.PlayerCameraSystem;
 import com.LAMIEGames.TMIS.ecs.system.PlayerMovementSystem;
 import com.LAMIEGames.TMIS.view.AnimationType;
 import com.badlogic.ashley.core.ComponentMapper;
@@ -44,6 +45,7 @@ public class ECSEngine extends PooledEngine {
         fixtureDef = new FixtureDef();
 
         this.addSystem(new PlayerMovementSystem(context));
+//        this.addSystem(new PlayerCameraSystem(context));
         this.addSystem(new AnimationSystem(context));
         this.addSystem(new PlayerAnimationSystem(context));
 

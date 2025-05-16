@@ -20,6 +20,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.graphics.profiling.GLProfiler;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
@@ -36,6 +37,7 @@ public class GameRenderer implements Disposable {
     private final SpriteBatch batch;
     private final AssetManager assetManager;
     private final EnumMap<AnimationType, Animation<Sprite>> animationCache;
+    private final GLProfiler profiler;
 
     private final ImmutableArray<Entity> animateEntities;
     private final MapRenderer mapRenderer;
@@ -53,30 +55,51 @@ public class GameRenderer implements Disposable {
         mapRenderer = new MapRenderer(mapTypes, UNIT_SCALE, batch); // Масштаб 1.0f для простоты
 //        context.getMapManager().addMapListener(this);
 
+        //profiler
+        profiler = new GLProfiler(Gdx.graphics);
+        profiler.enable();
+        if (profiler.isEnabled()) {
+            box2DDebugRenderer = new Box2DDebugRenderer();
+            world = context.getWorld();
+        } else {
+            box2DDebugRenderer = null;
+            world = null;
+        }
+
         animationCache = new EnumMap<AnimationType, Animation<Sprite>>(AnimationType.class);
 
         animateEntities = context.getEcsEngine().getEntitiesFor(Family.all(
             AnimationComponent.class, B2DComponent.class).get());
 
-        //возможно добавить профайлер
-        box2DDebugRenderer = new Box2DDebugRenderer();
-        world = context.getWorld();
     }
 
     public void render(final float alpha) {
         Gdx.gl.glClearColor(0,0,0,0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-//        screenViewport.apply(false);
+        batch.setProjectionMatrix(gameCamera.combined);
+
+        batch.begin();
+        screenViewport.apply(false);
         if (mapRenderer != null) {
             mapRenderer.render();
         }
 
+//        for (final Entity entity :gameObjectEntities) {
+//            renderGameObject(entity, alpha);
+//        }
         for (final Entity entity: animateEntities) {
             renderEntity(entity, alpha);
         }
+        batch.end();
 
-//        box2DDebugRenderer.render(world, gameCamera.combined);
+        if (profiler.isEnabled()) {
+            Gdx.app.debug("RenderInfo", "Bindings:" + profiler.getTextureBindings());
+            Gdx.app.debug("RenderInfo", "Drawcalls:" + profiler.getDrawCalls());
+            profiler.reset();
+
+            box2DDebugRenderer.render(world, gameCamera.combined);
+        }
     }
 
     private void renderEntity(final Entity entity, final float alpha) {
@@ -97,23 +120,30 @@ public class GameRenderer implements Disposable {
         Animation<Sprite> animation = animationCache.get(animationType);
         if (animation == null) {
             //create animation
-            Gdx.app.debug(TAG,"Creating a new animation" + animationType);
-            TextureAtlas.AtlasRegion atlasRegion = assetManager.get(animationType.getAtlasPath(),
+            Gdx.app.debug(TAG, "Creating a new animation" + animationType);
+            TextureRegion[][] textureRegions = regionCache.get(animationType.getAtlasKey());
+            if(textureRegions == null) {
+            final TextureAtlas.AtlasRegion atlasRegion = assetManager.get(animationType.getAtlasPath(),
                 TextureAtlas.class).findRegion(animationType.getAtlasKey());
-            final TextureRegion[][] textureRegions = atlasRegion.split(32,32);
-            animation = new Animation<Sprite>(animationType.getFrameTime(), getKeyFrames
-                (textureRegions[animationType.getSpriteIndex()]), Animation.PlayMode.LOOP);
-            animationCache.put(animationType, animation);
-        }
-        return animation;
+            textureRegions = atlasRegion.split(32, 32);
+            regionCache.put(animationType.getAtlasKey(), textureRegions);
+            }
+        animation = new Animation<Sprite>(animationType.getFrameTime(), getKeyFrames
+            (textureRegions[animationType.getSpriteIndex()]));
+        animation.setPlayMode(Animation.PlayMode.LOOP);
+        animationCache.put(animationType, animation);
+
+        }return animation;
     }
 
-    private Array<? extends Sprite> getKeyFrames(final TextureRegion[] textureRegion) {
-        final Array<Sprite> keyFrames = new Array<Sprite>();
+    private Sprite[] getKeyFrames(final TextureRegion[] textureRegion) {
+        final Sprite [] keyFrames = new Sprite[textureRegion.length];
+
+        int i = 0;
         for(final TextureRegion region : textureRegion){
             final Sprite sprite = new Sprite(region);
             sprite.setOriginCenter();
-            keyFrames.add(sprite);
+            keyFrames[i++] = sprite;
         }
 
         return keyFrames;

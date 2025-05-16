@@ -84,10 +84,6 @@ public class Main extends Game {
         Gdx.app.setLogLevel(Application.LOG_DEBUG);
         batch = new SpriteBatch();
 
-        //profiler
-        profiler = new GLProfiler(Gdx.graphics);
-        profiler.enable();
-
         //box2d stuff
         accumulator = 0;
         Box2D.init();
@@ -261,9 +257,6 @@ public class Main extends Game {
         stage.act(deltaTime);
         stage.draw();
 
-        Gdx.app.debug("RenderInfo", "Bindings:" + profiler.getTextureBindings());
-        Gdx.app.debug("RenderInfo", "Drawcalls:" + profiler.getDrawCalls());
-        profiler.reset();
     }
 
     @Override
