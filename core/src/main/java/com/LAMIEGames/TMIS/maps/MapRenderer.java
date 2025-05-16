@@ -22,7 +22,7 @@ public class MapRenderer implements Disposable {
 
     private void loadMapTiles(MapType[] mapTypes) {
         // Создаем текстурный атлас для загрузки текстур
-        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("map/map.atlas")); // Укажите правильный путь к атласу
+        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("map/map.atlas"));
         mapWidth = mapTypes.length; // Ширина карты в тайлах
         mapHeight = 1; // В данном случае мы предполагаем, что у нас одна строка тайлов
 
