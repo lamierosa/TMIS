@@ -1,0 +1,16 @@
+player_xana.png
+size:512,64
+filter:Linear,Linear
+repeat:none
+player_xana_back
+bounds:2,2,94,32
+offsets:5,30,128,64
+player_xana_front
+bounds:99,2,95,32
+offsets:5,30,128,64
+player_xana_left
+bounds:196,2,92,32
+offsets:6,30,128,64
+player_xana_right
+bounds:293,2,92,32
+offsets:6,30,128,64
