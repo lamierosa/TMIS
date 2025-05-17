@@ -27,7 +27,7 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
         this.manager = context.getAssetManager();
 
         // Загрузка текстуры фона
-        manager.load("ui/Menu_sprite.png", Texture.class); // Добавляем текстуру в AssetManager
+        manager.load("ui/menu_sprite.png", Texture.class); // Добавляем текстуру в AssetManager
 
         // Загрузка аудио
         isMusicLoaded = false;
@@ -55,7 +55,7 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
         if (manager.update()) {
             // Если загрузка завершена, получаем текстуру
             if (backgroundTexture == null) {
-                backgroundTexture = manager.get("ui/Menu_sprite.png", Texture.class);
+                backgroundTexture = manager.get("ui/menu_sprite.png", Texture.class);
             }
         }
 

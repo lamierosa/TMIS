@@ -52,7 +52,7 @@ public class GameRenderer implements Disposable {
         gameCamera = context.getGameCamera();
 
         MapType[] mapTypes = MapType.values(); // Получаем все типы карт из перечисления
-        mapRenderer = new MapRenderer(mapTypes, UNIT_SCALE, batch); // Масштаб 1.0f для простоты
+        mapRenderer = new MapRenderer(mapTypes, UNIT_SCALE, batch);
 //        context.getMapManager().addMapListener(this);
 
         //profiler
@@ -121,7 +121,7 @@ public class GameRenderer implements Disposable {
         if (animation == null) {
             //create animation
             Gdx.app.debug(TAG, "Creating a new animation" + animationType);
-            TextureRegion[][] textureRegions = regionCache.get(animationType.getAtlasKey());
+            TextureRegion[][] textureRegions = regionCache.get(animationType.getAtlasKey());// добавить кэш потом
             if(textureRegions == null) {
             final TextureAtlas.AtlasRegion atlasRegion = assetManager.get(animationType.getAtlasPath(),
                 TextureAtlas.class).findRegion(animationType.getAtlasKey());

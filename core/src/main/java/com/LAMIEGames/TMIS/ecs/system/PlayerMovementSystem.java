@@ -19,39 +19,39 @@ public class PlayerMovementSystem extends IteratingSystem implements GameKeyInpu
     public PlayerMovementSystem(final Main context) {
         super(Family.all(PlayerComponent.class, B2DComponent.class).get());
         context.getInputManager().addInputListener(this);
-        directionChange = false;
+//        directionChange = false;
         xFactor = yFactor = 0;
     }
 
     @Override
     protected void processEntity(Entity entity, float deltaTime) {
-        if(directionChange) {
+//        if(directionChange) {
             final PlayerComponent playerComponent = ECSEngine.playerCmpMapper.get(entity);
             final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
 
-            directionChange = false;
+//            directionChange = false;
             b2DComponent.body.applyLinearImpulse(
                 (xFactor * playerComponent.speed.x - b2DComponent.body.getLinearVelocity().x) * b2DComponent.body.getMass(),
                 (yFactor * playerComponent.speed.y - b2DComponent.body.getLinearVelocity().y) * b2DComponent.body.getMass(),
                 b2DComponent.body.getWorldCenter().x, b2DComponent.body.getWorldCenter().y, true
             );
-        }
+//        }
     }
 
     @Override
     public void keyPressed(InputManager inputManager, GameKeys gameKeys) {
         switch (gameKeys) {
             case LEFT:
-                directionChange = true;
+//                directionChange = true;
                 xFactor = -1;
             case RIGHT:
-                directionChange = true;
+//                directionChange = true;
                 xFactor = 1;
             case DOWN:
-                directionChange = true;
+//                directionChange = true;
                 yFactor = -1;
             case UP:
-                directionChange = true;
+//                directionChange = true;
                 yFactor = 1;
             default:
                 //nothing to do
