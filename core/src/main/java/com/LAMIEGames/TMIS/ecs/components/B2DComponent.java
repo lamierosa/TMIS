@@ -6,6 +6,8 @@ import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.utils.Pool;
 
 public class B2DComponent implements Component, Pool.Poolable {
+    // добавить сюда позицию и поставить так чтобы она не могла выходить за определенные значения
+    // через проверку скорее всего
     public Body body;
     public float width;
     public float height;

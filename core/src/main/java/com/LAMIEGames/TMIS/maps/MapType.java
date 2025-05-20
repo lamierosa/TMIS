@@ -1,14 +1,14 @@
 package com.LAMIEGames.TMIS.maps;
 
 public enum MapType {
-    ROOM("data/map/map.png", "Room_sprite_without_sun", 0),
-    HALLWAY("data/map/map.png", "Hallway_sprite", 1),
-    GATES("data/map/map.png", "Gates_sprite", 2),
-    PARK("data/map/map.png", "Park_sprite", 3),
-    MARKET("data/map/map.png", "Market_sprite", 4),
-    PLAYGROUND("data/map/map.png", "Playground_sprite", 5),
-    WASTELAND("data/map/map.png", "Wasteland_sprite", 6),
-    FOREST("data/map/map.png", "Forest_sprite", 7);
+    ROOM("map/map.png", "Room_sprite_without_sun", 0),
+    HALLWAY("map/map.png", "Hallway_sprite", 1),
+    GATES("map/map.png", "Gates_sprite", 2),
+    PARK("map/map.png", "Park_sprite", 3),
+    MARKET("map/map.png", "Market_sprite", 4),
+    PLAYGROUND("map/map.png", "Playground_sprite", 5),
+    WASTELAND("map/map.png", "Wasteland_sprite", 6),
+    FOREST("map/map.png", "Forest_sprite", 7);
 
     private final String atlasPath;
     private final String atlasRegion;
