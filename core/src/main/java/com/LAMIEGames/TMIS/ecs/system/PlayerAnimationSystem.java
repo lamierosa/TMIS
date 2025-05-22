@@ -37,7 +37,6 @@ public class PlayerAnimationSystem extends IteratingSystem {
         } else if (b2DComponent.body.getLinearVelocity().y < 0) {
             //player moves down
             animationComponent.animationType = AnimationType.PLAYER_DOWN;
-
         }
     }
 }

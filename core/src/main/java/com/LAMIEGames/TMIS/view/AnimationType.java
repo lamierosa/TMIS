@@ -1,10 +1,10 @@
 package com.LAMIEGames.TMIS.view;
 
 public enum AnimationType {
-    PLAYER_DOWN("data/player/xana/player_xana.atlas", "player_xana_front", 0.05f, 1),
+    PLAYER_DOWN("data/player/xana/player_xana.atlas", "player_xana_front", 0.05f, 0),
     PLAYER_UP("data/player/xana/player_xana.atlas", "player_xana_back", 0.05f, 0),
-    PLAYER_LEFT("data/player/xana/player_xana.atlas", "player_xana_left", 0.05f, 2),
-    PLAYER_RIGHT("data/player/xana/player_xana.atlas", "player_xana_right", 0.05f, 3);
+    PLAYER_LEFT("data/player/xana/player_xana.atlas", "player_xana_left", 0.05f, 0),
+    PLAYER_RIGHT("data/player/xana/player_xana.atlas", "player_xana_right", 0.05f, 0);
 
     private final String atlasPath;
     private final String atlasKey;

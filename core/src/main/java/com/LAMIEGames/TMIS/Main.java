@@ -111,13 +111,13 @@ public class Main extends Game {
         //ecs engine
         ecsEngine = new ECSEngine(this);
 
-        //game renderer
-        gameRenderer = new GameRenderer(this);
-
         //set first screen
         gameCamera = new OrthographicCamera();
         screenViewport = new FitViewport(9, 16, gameCamera);
         screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
+
+        //game renderer
+        gameRenderer = new GameRenderer(this);
 
         try {
             setScreen(ScreenType.LOADING);

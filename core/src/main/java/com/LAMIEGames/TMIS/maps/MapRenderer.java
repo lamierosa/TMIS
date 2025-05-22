@@ -1,58 +1,45 @@
 package com.LAMIEGames.TMIS.maps;
 
-import com.LAMIEGames.TMIS.Main;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Disposable;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MapRenderer implements Disposable {
     private final SpriteBatch batch;
-    private TextureRegion[][] mapTiles; // Массив текстурных регионов для карты
-    private int mapWidth;
-    private int mapHeight;
+    private final TextureAtlas atlas; // Атлас текстур
+    private final Map<String, TextureRegion> mapCache; // Кэш для текстур карт
+    private TextureRegion currentMapTile; // Текущий текстурный регион для карты
     private float unitScale;
 
-    public MapRenderer(MapType[] mapTypes, float unitScale, SpriteBatch batch) {
+    public MapRenderer(float unitScale, SpriteBatch batch) {
         this.batch = batch;
-        this.unitScale = Main.UNIT_SCALE;
-        loadMapTiles(mapTypes);
+        this.unitScale = unitScale; // Используем переданный unitScale
+        this.atlas = new TextureAtlas(Gdx.files.internal("map/map.atlas")); // Загружаем атлас один раз
+        this.mapCache = new HashMap<>(); // Инициализируем кэш
     }
 
-    private void loadMapTiles(MapType[] mapTypes) {
-        // Создаем текстурный атлас для загрузки текстур
-        TextureAtlas atlas = new TextureAtlas(Gdx.files.internal("map/map.atlas"));
-        mapWidth = mapTypes.length; // Ширина карты в тайлах
-        mapHeight = 1; // В данном случае мы предполагаем, что у нас одна строка тайлов
-
-        // Инициализируем массив текстурных регионов
-        mapTiles = new TextureRegion[mapWidth][mapHeight];
-
-        for (int i = 0; i < mapTypes.length; i++) {
-            // Получаем текстурный регион из атласа по имени региона
-            mapTiles[i][0] = atlas.findRegion(mapTypes[i].getAtlasRegion());
-        }
+    public void setMap(MapType mapType) {
+        String regionName = mapType.getAtlasRegion(); // Получаем имя региона
+        currentMapTile = mapCache.computeIfAbsent(regionName, key -> atlas.findRegion(key)); // Загружаем из кэша или атласа
     }
 
     public void render() {
-        if (mapTiles == null || mapTiles.length == 0) return;
+        if (currentMapTile == null) return; // Проверяем, загружена ли карта
 
         batch.begin();
-
-        for (int x = 0; x < mapWidth; x++) {
-            TextureRegion tile = mapTiles[x][0]; // Отрисовываем только первую строку
-            if (tile != null) {
-                batch.draw(tile, x * unitScale, 0, unitScale, unitScale); // Отрисовываем тайлы с учетом масштаба
-            }
-        }
-
+        batch.draw(currentMapTile, 0, 0, unitScale, unitScale); // Отрисовываем тайл с учетом масштаба
         batch.end();
     }
 
     @Override
     public void dispose() {
-
+        atlas.dispose(); // Освобождаем ресурсы атласа
+        batch.dispose(); // Освобождаем ресурсы спрайт-батча
     }
 }
 

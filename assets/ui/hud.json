@@ -8,40 +8,44 @@
     },
 
     "textColor": {
-      "r": 0.85,
-      "g": 0.17,
-      "b": 0.34,
+      "r": 0.52,
+      "g": 0.10,
+      "b": 0.21,
       "a": 1
     }
   },
   "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
     "normal": {
       "font": "font_20",
-      "fontColor": "white"
+      "fontColor": "textColor"
     },
     "big": {
       "font": "font_26",
-      "fontColor": "white"
+      "fontColor": "textColor"
     },
     "small": {
       "font": "font_16",
-      "fontColor": "white"
+      "fontColor": "textColor"
     },
     "huge": {
+      "font": "font_32",
+      "fontColor": "textColor"
+    },
+    "hugeWhite": {
       "font": "font_32",
       "fontColor": "white"
     },
     "info_frame": {
       "font": "font_16",
-      "fontColor": "white"
+      "fontColor": "textColor"
     },
     "info": {
       "font": "font_16",
-      "fontColor": "white"
+      "fontColor": "textColor"
     }
   },
     "com.badlogic.gdx.scenes.scene2d.ui.ProgressBar$ProgressBarStyle": {
-      "default": {
+      "default-horizontal": {
         "background": "knobAfter",
         "knob": "knob",
         "knobBefore": "knobBefore"

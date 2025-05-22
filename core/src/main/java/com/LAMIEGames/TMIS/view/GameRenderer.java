@@ -23,8 +23,8 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.profiling.GLProfiler;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import java.util.EnumMap;
@@ -39,6 +39,7 @@ public class GameRenderer implements Disposable {
     private final EnumMap<AnimationType, Animation<Sprite>> animationCache;
     private final GLProfiler profiler;
 
+    private ObjectMap<String, TextureRegion[][]> regionCache;
     private final ImmutableArray<Entity> animateEntities;
     private final MapRenderer mapRenderer;
 
@@ -50,9 +51,10 @@ public class GameRenderer implements Disposable {
         screenViewport = context.getScreenViewport();
         batch = context.getSpriteBatch();
         gameCamera = context.getGameCamera();
+        regionCache = new ObjectMap<String, TextureRegion[][]>();
 
-        MapType[] mapTypes = MapType.values(); // Получаем все типы карт из перечисления
-        mapRenderer = new MapRenderer(mapTypes, UNIT_SCALE, batch);
+        // Инициализация MapRenderer
+        this.mapRenderer = new MapRenderer(UNIT_SCALE, batch);
 //        context.getMapManager().addMapListener(this);
 
         //profiler
@@ -98,7 +100,9 @@ public class GameRenderer implements Disposable {
             Gdx.app.debug("RenderInfo", "Drawcalls:" + profiler.getDrawCalls());
             profiler.reset();
 
-            box2DDebugRenderer.render(world, gameCamera.combined);
+            if (box2DDebugRenderer != null && world != null) {
+                box2DDebugRenderer.render(world, gameCamera.combined); // Отрисовка отладочной информации Box2D
+            }
         }
     }
 
@@ -110,8 +114,8 @@ public class GameRenderer implements Disposable {
             final Animation<Sprite> animation = getAnimation(animationComponent.animationType);
             final Sprite frame = animation.getKeyFrame(animationComponent.animationTime);
             b2DComponent.renderPosition.lerp(b2DComponent.body.getPosition(), alpha);
-            frame.setBounds(b2DComponent.renderPosition.x - animationComponent.width * 0.5f,
-            b2DComponent.renderPosition.y - b2DComponent.height * 0.5f, animationComponent.width, animationComponent.height);
+            frame.setBounds(b2DComponent.renderPosition.x - animationComponent.width * 2f,
+            b2DComponent.renderPosition.y - b2DComponent.height * 2f, animationComponent.width, animationComponent.height);
             frame.draw(batch);
         }
     }
@@ -120,10 +124,11 @@ public class GameRenderer implements Disposable {
         Animation<Sprite> animation = animationCache.get(animationType);
         if (animation == null) {
             //create animation
-            Gdx.app.debug(TAG, "Creating a new animation" + animationType);
+            Gdx.app.debug(TAG, "Creating a new animation " + animationType);
             TextureRegion[][] textureRegions = regionCache.get(animationType.getAtlasKey());// добавить кэш потом
             if(textureRegions == null) {
-            final TextureAtlas.AtlasRegion atlasRegion = assetManager.get(animationType.getAtlasPath(),
+                Gdx.app.debug(TAG, "Creating texture regions for " + animationType.getAtlasKey());
+                final TextureAtlas.AtlasRegion atlasRegion = assetManager.get(animationType.getAtlasPath(),
                 TextureAtlas.class).findRegion(animationType.getAtlasKey());
             textureRegions = atlasRegion.split(32, 32);
             regionCache.put(animationType.getAtlasKey(), textureRegions);
@@ -160,13 +165,18 @@ public class GameRenderer implements Disposable {
 
     }
 
-//    public void mapChange() {
-//        mapRenderer.setMap(MapType.mapType);
-//
-//        if (dummySprite == null) {
-//            dummySprite = assetManager.get("data/player/xana/player_xana.atlas",
-//                TextureAtlas.class).createSprite("Xana");
-//            dummySprite.setOriginCenter();
-//        }
-//    }
+    // Метод для получения текстуры из кэша
+    public TextureRegion[][] getTextureFromCache(String regionName) {
+        return regionCache.get(regionName);
+    }
+
+    // Метод для добавления текстуры в кэш
+    public void addTextureToCache(String regionName, TextureRegion[][] textureRegions) {
+        regionCache.put(regionName, textureRegions);
+    }
+
+    public void mapChange(MapType mapType) {
+        mapRenderer.setMap(mapType);
+
+    }
 }

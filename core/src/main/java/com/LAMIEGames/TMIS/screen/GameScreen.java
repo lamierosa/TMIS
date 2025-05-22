@@ -14,7 +14,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends AbstractScreen<GameUI> {
-//    private final MapRenderer mapRenderer;
+    private final MapRenderer mapRenderer;
     //todo: добавить карты на экран
 //    private final PreferenceManager preferenceManager;
     private final Entity player;
@@ -25,12 +25,13 @@ public class GameScreen extends AbstractScreen<GameUI> {
 //        spawnCollisionAreas(); лл откуда это вообще.. ладно оставим
 
         //map renderer доработать
-        //mapRenderer = new MapRenderer(); ЧТО СЮДА СТАВИТЬ ВООБЩЕ гпт мразь
-        //mapRenderer.setMap(); добавить метод перерключения
+        mapRenderer = new MapRenderer();
+        mapRenderer.setMap();
 
         //preferenceManager = context.getPreferenceManager; добавить в main?????? i guess
 
         //todo: сделать что-то со со стартовой локацией потому что map у меня нету
+
         player = context.getEcsEngine().createPlayer(new Vector2(0,0),0.75f,0.75f);
     }
 

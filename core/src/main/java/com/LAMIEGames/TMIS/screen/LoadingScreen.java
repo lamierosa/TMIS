@@ -26,9 +26,6 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
         this.batch = context.getSpriteBatch();
         this.manager = context.getAssetManager();
 
-        // Загрузка текстуры фона
-        manager.load("ui/menu_sprite.png", Texture.class); // Добавляем текстуру в AssetManager
-
         // Загрузка аудио
         isMusicLoaded = false;
         for (final AudioType audioType : AudioType.values()) {
@@ -51,22 +48,6 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         manager.update();
-
-        if (manager.update()) {
-            // Если загрузка завершена, получаем текстуру
-            if (backgroundTexture == null) {
-                backgroundTexture = manager.get("ui/menu_sprite.png", Texture.class);
-            }
-        }
-
-        // Отрисовка фона только если текстура загружена
-        if (backgroundTexture != null) {
-            batch.begin();
-            batch.draw(backgroundTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight()); // Отрисовка текстуры на весь экран
-            batch.end();
-        } else {
-            System.out.println("background is null");
-        }
 
             if (!isMusicLoaded && manager.isLoaded(AudioType.MENUMUSIC.getFilePath())) {
                 isMusicLoaded = true;

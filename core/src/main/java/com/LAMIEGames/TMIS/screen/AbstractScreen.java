@@ -23,8 +23,8 @@ public abstract class AbstractScreen<T extends Table> implements Screen, GameKey
         viewport = context.getScreenViewport();
         inputManager = context.getInputManager();
 
-        stage = context.getStage();
         screenUI = getScreenUI(context);
+        stage = context.getStage();
         audioManager = context.getAudioManager();
     }
 
