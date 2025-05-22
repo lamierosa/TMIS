@@ -14,7 +14,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen extends AbstractScreen<GameUI> {
-    private final MapRenderer mapRenderer;
+//    private final MapRenderer mapRenderer;
     //todo: добавить карты на экран
 //    private final PreferenceManager preferenceManager;
     private final Entity player;
@@ -24,9 +24,9 @@ public class GameScreen extends AbstractScreen<GameUI> {
 
 //        spawnCollisionAreas(); лл откуда это вообще.. ладно оставим
 
-        //map renderer доработать
-        mapRenderer = new MapRenderer();
-        mapRenderer.setMap();
+//        //map renderer доработать
+//        mapRenderer = new MapRenderer();
+//        mapRenderer.setMap();
 
         //preferenceManager = context.getPreferenceManager; добавить в main?????? i guess
 
