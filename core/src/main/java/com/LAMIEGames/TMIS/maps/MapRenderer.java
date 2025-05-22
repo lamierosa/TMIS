@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class MapRenderer implements Disposable {
     private final SpriteBatch batch;
-    private final TextureAtlas atlas; // Атлас текстур
+    private final TextureAtlas atlas;
     private final Map<String, TextureRegion> mapCache; // Кэш для текстур карт
     private TextureRegion currentMapTile; // Текущий текстурный регион для карты
     private float unitScale;
@@ -32,14 +32,14 @@ public class MapRenderer implements Disposable {
         if (currentMapTile == null) return; // Проверяем, загружена ли карта
 
         batch.begin();
-        batch.draw(currentMapTile, 0, 0, unitScale, unitScale); // Отрисовываем тайл с учетом масштаба
+        batch.draw(currentMapTile, 0, 0, 100, 100); // Отрисовываем тайл с учетом масштаба
         batch.end();
     }
 
     @Override
     public void dispose() {
-        atlas.dispose(); // Освобождаем ресурсы атласа
-        batch.dispose(); // Освобождаем ресурсы спрайт-батча
+        atlas.dispose();
+        batch.dispose();
     }
 }
 

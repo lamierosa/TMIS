@@ -83,9 +83,9 @@ public class GameRenderer implements Disposable {
 
         batch.begin();
         screenViewport.apply(false);
-        if (mapRenderer != null) {
-            mapRenderer.render();
-        }
+//        if (mapRenderer != null) {
+//            mapRenderer.render();
+//        }
 
 //        for (final Entity entity :gameObjectEntities) {
 //            renderGameObject(entity, alpha);

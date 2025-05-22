@@ -119,6 +119,8 @@ public class Main extends Game {
         //game renderer
         gameRenderer = new GameRenderer(this);
 
+
+
         try {
             setScreen(ScreenType.LOADING);
         } catch (ReflectionException e) {
@@ -237,8 +239,6 @@ public class Main extends Game {
             super.setScreen(screen);
         }
     }
-
-
 
     @Override
     public void render() {

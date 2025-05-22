@@ -8,8 +8,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.scenes.scene2d.utils.NinePatchDrawable;
 
 public class MenuUI extends Table {
-    public MenuUI(final Skin skin) {
-        super(skin);
+    public MenuUI(final Main context) {
+        super(context.getSkin());
         setFillParent(true);
         this.setBackground(new NinePatchDrawable(new NinePatch(new Texture
             ("ui/menu_sprite.png"), 1, 1, 1, 1)));

@@ -41,7 +41,7 @@ public class MenuScreen extends AbstractScreen {
 
     @Override
     protected MenuUI getScreenUI(final Main context) {
-        return new MenuUI(context.getSkin());
+        return new MenuUI(context);
     }
 
     @Override
