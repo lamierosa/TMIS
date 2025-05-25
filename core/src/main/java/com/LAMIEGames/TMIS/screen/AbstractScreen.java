@@ -4,6 +4,8 @@ import com.LAMIEGames.TMIS.Main;
 import com.LAMIEGames.TMIS.audio.AudioManager;
 import com.LAMIEGames.TMIS.input.GameKeyInputListener;
 import com.LAMIEGames.TMIS.input.InputManager;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
@@ -25,6 +27,7 @@ public abstract class AbstractScreen<T extends Table> implements Screen, GameKey
 
         screenUI = getScreenUI(context);
         stage = context.getStage();
+        Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
         audioManager = context.getAudioManager();
     }
 

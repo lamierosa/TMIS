@@ -1,6 +1,7 @@
 package com.LAMIEGames.TMIS.view;
 
 import static com.LAMIEGames.TMIS.Main.UNIT_SCALE;
+import static com.LAMIEGames.TMIS.Main.alpha;
 
 import com.LAMIEGames.TMIS.Main;
 import com.LAMIEGames.TMIS.ecs.ECSEngine;
@@ -59,7 +60,7 @@ public class GameRenderer implements Disposable {
 
         //profiler
         profiler = new GLProfiler(Gdx.graphics);
-        profiler.enable();
+//        profiler.enable();
         if (profiler.isEnabled()) {
             box2DDebugRenderer = new Box2DDebugRenderer();
             world = context.getWorld();
@@ -75,7 +76,7 @@ public class GameRenderer implements Disposable {
 
     }
 
-    public void render(final float alpha) {
+    public void render(final float delta) {
         Gdx.gl.glClearColor(0,0,0,0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
@@ -83,9 +84,9 @@ public class GameRenderer implements Disposable {
 
         batch.begin();
         screenViewport.apply(false);
-//        if (mapRenderer != null) {
-//            mapRenderer.render();
-//        }
+        if (mapRenderer != null) {
+            mapRenderer.render();
+        }
 
 //        for (final Entity entity :gameObjectEntities) {
 //            renderGameObject(entity, alpha);
@@ -125,7 +126,7 @@ public class GameRenderer implements Disposable {
         if (animation == null) {
             //create animation
             Gdx.app.debug(TAG, "Creating a new animation " + animationType);
-            TextureRegion[][] textureRegions = regionCache.get(animationType.getAtlasKey());// добавить кэш потом
+            TextureRegion[][] textureRegions = regionCache.get(animationType.getAtlasKey());
             if(textureRegions == null) {
                 Gdx.app.debug(TAG, "Creating texture regions for " + animationType.getAtlasKey());
                 final TextureAtlas.AtlasRegion atlasRegion = assetManager.get(animationType.getAtlasPath(),

@@ -62,6 +62,7 @@ public class Main extends Game {
     private WorldContactListener worldContactListener;
     private  Box2DDebugRenderer box2DDebugRenderer;
 
+    public static float alpha;
     private static final BodyDef BODY_DEF = new BodyDef();
     private static final FixtureDef FIXTURE_DEF = new FixtureDef();
     //что то связанное с дельта тайм
@@ -108,24 +109,22 @@ public class Main extends Game {
         inputManager = new InputManager();
         Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
 
-        //ecs engine
-        ecsEngine = new ECSEngine(this);
-
         //set first screen
         gameCamera = new OrthographicCamera();
         screenViewport = new FitViewport(9, 16, gameCamera);
+
+        //ecs engine
+        ecsEngine = new ECSEngine(this);
+
         screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
-
-        //game renderer
-        gameRenderer = new GameRenderer(this);
-
-
-
         try {
             setScreen(ScreenType.LOADING);
         } catch (ReflectionException e) {
             throw new GdxRuntimeException("Failed to create first screen", e);
         }
+
+        //game renderer
+        gameRenderer = new GameRenderer(this);
 
 //        texture = new Texture(Gdx.files.internal("data/map/map.png"));
     }
@@ -182,7 +181,7 @@ public class Main extends Game {
     }
 
     public OrthographicCamera getGameCamera() {
-        return gameCamera;
+        return this.gameCamera;
     }
 
     public ECSEngine getEcsEngine() {
@@ -221,6 +220,13 @@ public class Main extends Game {
         return screenViewport;
     }
 
+    public WorldContactListener getWorldContactListener() {
+        return this.worldContactListener;
+    }
+
+    public GameRenderer getGameRenderer() {
+        return this.gameRenderer;
+    }
 
     public void setScreen(final ScreenType screenType) throws ReflectionException {
         final Screen screen = screenCache.get(screenType);

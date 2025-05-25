@@ -1,9 +1,11 @@
 package com.LAMIEGames.TMIS.screen;
 
 import static com.LAMIEGames.TMIS.Main.UNIT_SCALE;
+import static com.LAMIEGames.TMIS.Main.alpha;
 
 import com.LAMIEGames.TMIS.Main;
 import com.LAMIEGames.TMIS.PreferenceManager;
+import com.LAMIEGames.TMIS.audio.AudioType;
 import com.LAMIEGames.TMIS.input.GameKeys;
 import com.LAMIEGames.TMIS.input.InputManager;
 import com.LAMIEGames.TMIS.maps.MapRenderer;
@@ -19,41 +21,35 @@ import com.badlogic.gdx.math.Vector2;
 public class GameScreen extends AbstractScreen<GameUI> {
     private final MapRenderer mapRenderer;
     //todo: добавить карты на экран
-//    private final PreferenceManager preferenceManager;
+    private final PreferenceManager preferenceManager;
     private final Entity player;
 
     public GameScreen(final Main context) {
         super(context);
-
-//        spawnCollisionAreas(); лл откуда это вообще.. ладно оставим
-
 //        //map renderer доработать
         mapRenderer = new MapRenderer(UNIT_SCALE, context.getSpriteBatch());
 
 
-        //preferenceManager = context.getPreferenceManager; добавить в main?????? i guess
+        preferenceManager = new PreferenceManager();
 
         //todo: сделать что-то со со стартовой локацией потому что map у меня нету
 
         player = context.getEcsEngine().createPlayer(new Vector2(0,0),0.75f,0.75f);
+//        context.getGameCamera().position.set();
+        audioManager.playAudio(AudioType.GAMEMUSIC);
     }
 
-    @Override
-    protected GameUI getScreenUI(final Main context) {
-        return new GameUI(context);
-    }
+
 
     @Override
-    public void render(final float delta) {
+    public void render(float delta) {
         // сюда, возможно, добавить переключение с локации на локацию
         mapRenderer.setMap(MapType.ROOM);
-        if (mapRenderer != null) {
-            mapRenderer.render();
-        }
+        context.getGameRenderer().render(alpha);
 
-//        preferenceManager.saveGameState();
+        preferenceManager.saveGameState(player);
 
-        //viewport.apply(true); у чувака этого не было, разобраться
+        viewport.apply(true);
     }
 
     @Override
@@ -69,6 +65,11 @@ public class GameScreen extends AbstractScreen<GameUI> {
     @Override
     public void resume() {
 
+    }
+
+//    @Override
+    protected GameUI getScreenUI(final Main context) {
+        return new GameUI(context);
     }
 
     @Override

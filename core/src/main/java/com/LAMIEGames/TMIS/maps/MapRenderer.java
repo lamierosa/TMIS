@@ -25,7 +25,7 @@ public class MapRenderer implements Disposable {
 
     public void setMap(MapType mapType) {
         String regionName = mapType.getAtlasRegion(); // Получаем имя региона
-        currentMapTile = mapCache.computeIfAbsent(regionName, key -> atlas.findRegion(key)); // Загружаем из кэша или атласа
+        currentMapTile = mapCache.computeIfAbsent(regionName, key -> atlas.findRegion(key)); // Загружаем из кэша или атласа (не работает. узнать почему
     }
 
     public void render() {
