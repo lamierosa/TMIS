@@ -57,14 +57,16 @@ public class Main extends Game {
     public static final float UNIT_SCALE = 1/32f;
     public static final short BIT_PLAYER = 1<<0;
     public static final short BIT_GROUND = 1<<1;
+    public static final short BIT_GAME_OBJECT = 1 << 2;
+
 
     private World world;
     private WorldContactListener worldContactListener;
     private  Box2DDebugRenderer box2DDebugRenderer;
 
     public static float alpha;
-    private static final BodyDef BODY_DEF = new BodyDef();
-    private static final FixtureDef FIXTURE_DEF = new FixtureDef();
+    public static final BodyDef BODY_DEF = new BodyDef();
+    public static final FixtureDef FIXTURE_DEF = new FixtureDef();
     //что то связанное с дельта тайм
     private static final float FIXED_TIME_STEP = 1/60f;
     private float accumulator;
@@ -118,7 +120,7 @@ public class Main extends Game {
 
         screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
         try {
-            setScreen(ScreenType.LOADING);
+            setScreen(ScreenType.MENU);
         } catch (ReflectionException e) {
             throw new GdxRuntimeException("Failed to create first screen", e);
         }
@@ -228,6 +230,10 @@ public class Main extends Game {
         return this.gameRenderer;
     }
 
+    public Box2DDebugRenderer getBox2DDebugRenderer() {
+        return box2DDebugRenderer;
+    }
+
     public void setScreen(final ScreenType screenType) throws ReflectionException {
         final Screen screen = screenCache.get(screenType);
         if (screen == null) {
@@ -258,7 +264,7 @@ public class Main extends Game {
             accumulator -= FIXED_TIME_STEP;
         }
 
-        gameRenderer.render(accumulator / FIXED_TIME_STEP);
+        alpha = accumulator / FIXED_TIME_STEP;
         stage.getViewport().apply();
         stage.act(deltaTime);
         stage.draw();

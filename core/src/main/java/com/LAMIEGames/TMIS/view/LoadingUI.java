@@ -31,7 +31,7 @@ public class LoadingUI extends Table {
 
         pressAnyKeyBtn = new TextButton("Loading...", getSkin(), "hugeWhite");
         txtBtn.getLabel().setWrap(true);
-        txtBtn.setVisible(false);
+        txtBtn.setVisible(true);
         txtBtn.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
@@ -48,11 +48,11 @@ public class LoadingUI extends Table {
 
     public void setProgress (final float progress){
         progressBar.setValue(progress);
-        if (progress < 1 && !txtBtn.isVisible()){
-            txtBtn.setVisible(true);
-            txtBtn.setColor(1,1,1,0);
-            txtBtn.addAction(Actions.forever(Actions.sequence
-                (Actions.alpha(1,1), Actions.alpha(0,1))));
-        }
+//        if (progress < 1 && !txtBtn.isVisible()){
+//            txtBtn.setVisible(true);
+//            txtBtn.setColor(1,1,1,0);
+//            txtBtn.addAction(Actions.forever(Actions.sequence
+//                (Actions.alpha(1,1), Actions.alpha(0,1))));
+//        }
     }
 }

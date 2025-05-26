@@ -1,5 +1,7 @@
 package com.LAMIEGames.TMIS.screen;
 
+import static com.LAMIEGames.TMIS.Main.TAG;
+
 import com.LAMIEGames.TMIS.Main;
 import com.LAMIEGames.TMIS.audio.AudioType;
 import com.LAMIEGames.TMIS.input.GameKeys;
@@ -13,11 +15,11 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.GdxRuntimeException;
+import com.badlogic.gdx.utils.reflect.ReflectionException;
 
 public class LoadingScreen extends AbstractScreen<LoadingUI> {
     private final AssetManager manager;
     private boolean isMusicLoaded;
-    private Texture backgroundTexture;// Добавляем поле для текстуры фона
     private SpriteBatch batch;
 
     public LoadingScreen(final Main context) {
@@ -55,7 +57,6 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
             }
 
             screenUI.setProgress(manager.getProgress());
-
 
 //        // Проверяем, завершена ли загрузка ресурсов
 //        if (assMan.manager.update()) {
@@ -113,18 +114,16 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
 
         @Override
         public void dispose () {
-            // Освобождаем ресурсы
-            if (backgroundTexture != null) {
-                backgroundTexture.dispose();
-            }        }
+
+        }
 
         @Override
         public void keyPressed (InputManager inputManager, GameKeys gameKeys){
             if (manager.getProgress() >= 1) {
                 try {
-                    context.setScreen(ScreenType.MENU);
-                } catch (com.badlogic.gdx.utils.reflect.ReflectionException e) {
-                    throw new GdxRuntimeException("Failed to go on MENU screen", e);
+                    context.setScreen(ScreenType.GAME);
+                } catch (ReflectionException e) {
+                    throw new GdxRuntimeException("Failed to go on GAME screen", e);
                 }
             }
         }

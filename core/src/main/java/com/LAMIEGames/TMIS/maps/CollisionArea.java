@@ -15,7 +15,6 @@ public class CollisionArea {
         for (int i = 0; i < vertices.length; i+=2) {
             vertices[i] = vertices[i] * UNIT_SCALE;
             vertices[i+1] = vertices[i+1] * UNIT_SCALE;
-
         }
     }
 

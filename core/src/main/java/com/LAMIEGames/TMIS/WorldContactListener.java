@@ -1,5 +1,6 @@
 package com.LAMIEGames.TMIS;
 
+import static com.LAMIEGames.TMIS.Main.BIT_GAME_OBJECT;
 import static com.LAMIEGames.TMIS.Main.BIT_PLAYER;
 
 import com.badlogic.gdx.Gdx;
@@ -14,8 +15,8 @@ import com.badlogic.gdx.utils.Array;
 import javax.swing.text.html.parser.Entity;
 
 public class WorldContactListener implements ContactListener {
-
     private final Array<PlayerCollisionListener> listeners;
+
     public WorldContactListener() {
         listeners = new Array<PlayerCollisionListener>();
     }
@@ -26,6 +27,7 @@ public class WorldContactListener implements ContactListener {
 
     @Override
     public void beginContact(Contact contact) {
+
         final Entity player;
         final Entity gameObj;
         final Body bodyA = contact.getFixtureA().getBody();
@@ -43,15 +45,19 @@ public class WorldContactListener implements ContactListener {
             return;
         }
 
-//        if ((int) (catFixA & BIT_GAME_OBJECT) == BIT_GAME_OBJECT) {
-//            gameObj = (Entity) (bodyA.getUserData());
-//        }
-//        else if ((int) (catFixB & BIT_GAME_OBJECT) == BIT_GAME_OBJECT) {
-//            gameObj = (Entity) (bodyB.getUserData());
-//        }
-//        else {
-//            return;
-//        }
+        if ((int) (catFixA & BIT_GAME_OBJECT) == BIT_GAME_OBJECT) {
+            gameObj = (Entity) (bodyA.getUserData());
+        }
+        else if ((int) (catFixB & BIT_GAME_OBJECT) == BIT_GAME_OBJECT) {
+            gameObj = (Entity) (bodyB.getUserData());
+        }
+        else {
+            return;
+        }
+
+        for (final PlayerCollisionListener listener : listeners) {
+            listener.playerCollision(player, gameObj);
+        }
 
     }
 

@@ -56,5 +56,35 @@
       "knob": "knob",
       "knobBefore": "knobBefore"
     }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Button$ButtonStyle": {
+    "up": {
+      "down": "UpButton_sprite",
+      "up": "UpButton_sprite"
+    },
+    "left": {
+      "down": "LeftButton_sprite",
+      "up": "LeftButton_sprite"
+    },
+    "right": {
+      "down": "RightButton_sprite",
+      "up": "RightButton_sprite"
+    },
+    "down": {
+      "down": "DownButton_sprite",
+      "up": "DownButton_sprite"
+    },
+    "backButton": {
+      "down": "backPress",
+      "up": "backPress"
+    },
+    "toolBarButton": {
+      "down": "ToolBar_sprite",
+      "up": "ToolBar_sprite"
+    },
+    "musicButton": {
+      "down": "Music_sprite",
+      "up": "Music_sprite"
+    }
   }
 }

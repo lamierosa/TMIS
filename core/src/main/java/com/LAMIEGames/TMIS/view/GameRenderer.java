@@ -48,8 +48,12 @@ public class GameRenderer implements Disposable {
     private final World world;
 
     public GameRenderer(final Main context) {
-        assetManager = context.getAssetManager();
+
         screenViewport = context.getScreenViewport();
+        screenViewport.setWorldHeight(9);
+        screenViewport.setWorldWidth(16);
+
+        assetManager = context.getAssetManager();
         batch = context.getSpriteBatch();
         gameCamera = context.getGameCamera();
         regionCache = new ObjectMap<String, TextureRegion[][]>();
@@ -60,7 +64,7 @@ public class GameRenderer implements Disposable {
 
         //profiler
         profiler = new GLProfiler(Gdx.graphics);
-//        profiler.enable();
+        profiler.enable();
         if (profiler.isEnabled()) {
             box2DDebugRenderer = new Box2DDebugRenderer();
             world = context.getWorld();
@@ -82,8 +86,8 @@ public class GameRenderer implements Disposable {
 
         batch.setProjectionMatrix(gameCamera.combined);
 
-        batch.begin();
         screenViewport.apply(false);
+        batch.begin();
         if (mapRenderer != null) {
             mapRenderer.render();
         }
@@ -93,17 +97,25 @@ public class GameRenderer implements Disposable {
 //        }
         for (final Entity entity: animateEntities) {
             renderEntity(entity, alpha);
+            final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
         }
         batch.end();
 
-        if (profiler.isEnabled()) {
-            Gdx.app.debug("RenderInfo", "Bindings:" + profiler.getTextureBindings());
-            Gdx.app.debug("RenderInfo", "Drawcalls:" + profiler.getDrawCalls());
-            profiler.reset();
+        profiler.disable();
 
-            if (box2DDebugRenderer != null && world != null) {
-                box2DDebugRenderer.render(world, gameCamera.combined); // Отрисовка отладочной информации Box2D
-            }
+//        if (profiler.isEnabled()) {
+////            Gdx.app.debug("RenderInfo", "Bindings:" + profiler.getTextureBindings());
+////            Gdx.app.debug("RenderInfo", "Drawcalls:" + profiler.getDrawCalls());
+//            profiler.reset();
+//
+//            if (box2DDebugRenderer != null && world != null) {
+//                box2DDebugRenderer.render(world, gameCamera.combined); // Отрисовка отладочной информации Box2D
+//            }
+//        }
+
+        if (profiler.isEnabled()) {
+            profiler.reset();
+            box2DDebugRenderer.render(world, screenViewport.getCamera().combined);
         }
     }
 
@@ -166,18 +178,18 @@ public class GameRenderer implements Disposable {
 
     }
 
-    // Метод для получения текстуры из кэша
-    public TextureRegion[][] getTextureFromCache(String regionName) {
-        return regionCache.get(regionName);
-    }
-
-    // Метод для добавления текстуры в кэш
-    public void addTextureToCache(String regionName, TextureRegion[][] textureRegions) {
-        regionCache.put(regionName, textureRegions);
-    }
-
-    public void mapChange(MapType mapType) {
-        mapRenderer.setMap(mapType);
-
-    }
+//    // Метод для получения текстуры из кэша
+//    public TextureRegion[][] getTextureFromCache(String regionName) {
+//        return regionCache.get(regionName);
+//    }
+//
+//    // Метод для добавления текстуры в кэш
+//    public void addTextureToCache(String regionName, TextureRegion[][] textureRegions) {
+//        regionCache.put(regionName, textureRegions);
+//    }
+//
+//    public void mapChange(MapType mapType) {
+//        mapRenderer.setMap(mapType);
+//
+//    }
 }
