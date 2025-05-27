@@ -73,9 +73,9 @@ public class GameUI extends Table {
 
         init(context);
 
-        mainTable.add(map).expand().center();
+        mainTable.add(map).expand().center().padRight(400);
         initMap();
-        mainTable.add(toolBarButton).width(100).height(100).top().right().pad(10);
+        mainTable.add(toolBarButton).width(100).height(100).top().right().pad(10).padTop(100);
         this.row();
     }
 
@@ -114,7 +114,7 @@ public class GameUI extends Table {
         controlsTable.add(directionTable).bottom().left();
         controlsTable.padLeft(50).padBottom(50);
 
-        mainTable.add(controlsTable).bottom().left();
+        mainTable.add(controlsTable).bottom().left().padRight(200);
         this.row();
 
         initOptionsTable(context);
