@@ -19,6 +19,10 @@
       "font": "font_20",
       "fontColor": "textColor"
     },
+    "normalWhite": {
+      "font": "font_20",
+      "fontColor": "white"
+    },
     "big": {
       "font": "font_26",
       "fontColor": "textColor"

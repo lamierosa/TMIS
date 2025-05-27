@@ -27,7 +27,12 @@ import java.nio.Buffer;
 
 public class GameUI extends Table {
     private TextureAtlas atlasMap;
+    private Table mainTable;
     private Table optionsTable;
+    private Table controlsTable;
+    private Table directionTable;
+    private Table textPanel;
+    private Table map;
     private Button upButton;
     private Button downButton;
     private Button rightButton;
@@ -35,8 +40,6 @@ public class GameUI extends Table {
     private Button toolBarButton;
     private Button backButton;
     private TextButton saveAndExitButton;
-
-
 
     public GameUI(final Main context) {
         super(context.getSkin());
@@ -55,21 +58,35 @@ public class GameUI extends Table {
         toolBarButton = new Button(context.getSkin(), "toolBarButton");
         backButton = new Button(context.getSkin(), "backButton");
 
-        //room
-//        TextureRegionDrawable roomRegion = new TextureRegionDrawable(atlasMap.findRegion("Room_sprite_without_sun"));
-//        Image room = new Image(roomRegion);
-//        room.setAlign(Align.center);
-//
-//        //hallway
-//        TextureRegionDrawable hallwayRegion = new TextureRegionDrawable(atlasMap.findRegion("Hallway_sprite"));
-//        Image hallway = new Image(hallwayRegion);
-//        hallway.setAlign(Align.center);
-//
-//        add(room).width(800).height(800).expand().fill().row();
-////        room.remove();
+        map = new Table();
+
+        add(map).expand().fill();
+        this.row();
+
+        initMap();
+        mainTable = new Table();
+        mainTable.setFillParent(true);
+
+        add(mainTable);
+
+        mainTable.add(map).expand().center();
+
+        controlsTable = new Table();
+        directionTable = new Table();
 
         init(context);
+    }
 
+    private void initMap() {
+        TextureRegionDrawable roomRegion = new TextureRegionDrawable(atlasMap.findRegion("Room_sprite_without_sun"));
+        Image room = new Image(roomRegion);
+
+        TextureRegionDrawable hallwayRegion = new TextureRegionDrawable(atlasMap.findRegion("Hallway_sprite"));
+        Image hallway = new Image(hallwayRegion);
+
+        map.add(room).width(800).height(800).expand().fill().center().pad(10);
+        map.row(); // Переход на новую строку
+//        map.add(hallway).expand().center().pad(10);
     }
 
     public void init(final Main context) {
@@ -80,14 +97,24 @@ public class GameUI extends Table {
                 showOptionBar(true);
             }
         });
-        initOptionsTable(context);
-        add(downButton).width(100).height(100).left().bottom().pad(100).expand();
-        add(rightButton).width(100).height(100).left().bottom().pad(100).expand();
-        add(leftButton).width(100).height(100).left().bottom().pad(100).expand();
-        add(upButton).width(100).height(100).left().bottom().pad(100).expand();
+
+        mainTable.add(toolBarButton).width(100).height(100).top().right().pad(10);
+        mainTable.add(controlsTable);
         this.row();
-        add(toolBarButton).width(100).height(100).left().top().expand();
-        add(optionsTable).expand().center().width(250).height(250);
+        mainTable.add(optionsTable).expand().center().width(500).height(500);
+        this.row();
+
+        directionTable.add(upButton).width(100).height(100).pad(10).padLeft(200);
+        directionTable.row(); // Переход на новую строку
+        directionTable.add(leftButton).width(100).height(100).pad(10).padRight(50);
+        directionTable.add(rightButton).width(100).height(100).pad(10);
+        directionTable.row(); // Переход на новую строку
+        directionTable.add(downButton).width(100).height(100).pad(10).padLeft(200);
+
+        controlsTable.add(directionTable).bottom().left();
+        controlsTable.padLeft(50).padBottom(50);
+
+        initOptionsTable(context);
     }
 
     private void showOptionBar(boolean show) {
@@ -100,7 +127,7 @@ public class GameUI extends Table {
     }
 
     private void initOptionsTable (Main context) {
-        saveAndExitButton = new TextButton("Save and Exit", context.getSkin(), "normal");
+        saveAndExitButton = new TextButton("Save and Exit", context.getSkin(), "normalWhite");
         saveAndExitButton.addListener(new ChangeListener() {
             @Override
             public void changed(ChangeEvent event, Actor actor) {
@@ -114,8 +141,8 @@ public class GameUI extends Table {
         });
 
         optionsTable = new Table();
-//        optionsTable.setBackground(new NinePatchDrawable(new NinePatch(new Texture
-//            ("options.jpg"), 1, 1, 1, 1)));
+        optionsTable.setBackground(new NinePatchDrawable(new NinePatch(new Texture
+            ("ui/settingsBackground.jpg"), 1, 1, 1, 1)));
         optionsTable.add(saveAndExitButton).width(200).height(50).pad(10).row();
         makeVisibleOptions(false);
     }
