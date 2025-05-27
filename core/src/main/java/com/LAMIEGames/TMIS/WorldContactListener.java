@@ -3,6 +3,7 @@ package com.LAMIEGames.TMIS;
 import static com.LAMIEGames.TMIS.Main.BIT_GAME_OBJECT;
 import static com.LAMIEGames.TMIS.Main.BIT_PLAYER;
 
+import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.Contact;
@@ -12,7 +13,6 @@ import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.Manifold;
 import com.badlogic.gdx.utils.Array;
 
-import javax.swing.text.html.parser.Entity;
 
 public class WorldContactListener implements ContactListener {
     private final Array<PlayerCollisionListener> listeners;

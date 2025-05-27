@@ -25,26 +25,22 @@ public class PlayerCollisionSystem extends IteratingSystem implements WorldConta
         getEngine().removeEntity(entity);
     }
 
+
     @Override
-    public void playerCollision(javax.swing.text.html.parser.Entity player, javax.swing.text.html.parser.Entity gameObject) {
-
+    public void playerCollision(final Entity player, final Entity gameObject) {
+        final GameObjectComponent gameObjComp = ECSEngine.gameObjCmpMapper.get(gameObject);
+        switch (gameObjComp.type) {
+            case PAPER :
+                //remove crystal and increase player item num
+                gameObject.add(((ECSEngine) getEngine()).createComponent(RemoveComponent.class));
+                ECSEngine.playerCmpMapper.get(player).paperCount++;
+                break;
+            case DOOR :
+                teleport = true;
+                break;
+            case GRAVE :
+                //todo: add this later
+                break;
+        }
     }
-
-//    @Override
-//    public void playerCollision(final Entity player, final Entity gameObject) {
-//        final GameObjectComponent gameObjComp = ECSEngine.gameObjCmpMapper.get(gameObject);
-//        switch (gameObjComp.type) {
-//            case PAPER :
-//                //remove crystal and increase player item num
-//                gameObject.add(((ECSEngine) getEngine()).createComponent(RemoveComponent.class));
-//                ECSEngine.playerCmpMapper.get(player).paperCount++;
-//                break;
-//            case DOOR :
-//                teleport = true;
-//                break;
-//            case GRAVE :
-//                //todo: add this later
-//                break;
-//        }
-//    }
 }
