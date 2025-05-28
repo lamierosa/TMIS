@@ -59,7 +59,6 @@ public class Main extends Game {
     public static final short BIT_GROUND = 1<<1;
     public static final short BIT_GAME_OBJECT = 1 << 2;
 
-
     private World world;
     private WorldContactListener worldContactListener;
     private  Box2DDebugRenderer box2DDebugRenderer;
@@ -77,6 +76,7 @@ public class Main extends Game {
     public AssetManager assetManager;
     private InputManager inputManager;
     private AudioManager audioManager;
+    private PreferenceManager preferenceManager;
 
     private ECSEngine ecsEngine;
 
@@ -93,15 +93,16 @@ public class Main extends Game {
         world = new World(Vector2.Zero, true);
         worldContactListener = new WorldContactListener();
         world.setContactListener(worldContactListener);
+
         box2DDebugRenderer = new Box2DDebugRenderer();
 
         assetManager = new AssetManager();
         assetManager.load("data/player/xana/player_xana.atlas", TextureAtlas.class);
 
-
 //        manager.setLoader(TiledMap.class, new TmxMapLoader(manager.getFileHandleResolver()));
 
         initializeSkin();
+
         stage = new Stage(new FitViewport(1920,1080), batch);
 
         //audio
@@ -118,6 +119,8 @@ public class Main extends Game {
         //ecs engine
         ecsEngine = new ECSEngine(this);
 
+        preferenceManager = new PreferenceManager();
+
         screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
         try {
             setScreen(ScreenType.MENU);
@@ -131,7 +134,7 @@ public class Main extends Game {
 //        texture = new Texture(Gdx.files.internal("data/map/map.png"));
     }
 
-    public static void resetBodieAndFixtureDefinition() {
+    public static void resetBodiesAndFixtureDefinition() {
         BODY_DEF.position.set(0,0);
         BODY_DEF.gravityScale = 1;
         BODY_DEF.type = BodyDef.BodyType.StaticBody;
@@ -265,6 +268,7 @@ public class Main extends Game {
         }
 
         alpha = accumulator / FIXED_TIME_STEP;
+//        gameRenderer.render(alpha);
         stage.getViewport().apply();
         stage.act(deltaTime);
         stage.draw();

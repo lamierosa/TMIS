@@ -56,14 +56,13 @@ public class MenuScreen extends AbstractScreen {
             audioManager.playAudio(AudioType.MENUMUSIC);
         }
 
-
-        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
-            try {
-                context.setScreen(ScreenType.GAME);
-            } catch (ReflectionException e) {
-                throw new GdxRuntimeException("Failed to go on GAME screen", e);
-            }
-        }
+//        if (Gdx.input.isKeyPressed(Input.Keys.A)) {
+//            try {
+//                context.setScreen(ScreenType.GAME);
+//            } catch (ReflectionException e) {
+//                throw new GdxRuntimeException("Failed to go on GAME screen", e);
+//            }
+//        }
     }
 
     @Override

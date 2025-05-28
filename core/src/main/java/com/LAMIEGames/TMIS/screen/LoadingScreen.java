@@ -51,12 +51,12 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
 
         manager.update();
 
-            if (!isMusicLoaded && manager.isLoaded(AudioType.MENUMUSIC.getFilePath())) {
-                isMusicLoaded = true;
-                audioManager.playAudio(AudioType.MENUMUSIC);
-            }
+        if (!isMusicLoaded && manager.isLoaded(AudioType.MENUMUSIC.getFilePath())) {
+            isMusicLoaded = true;
+            audioManager.playAudio(AudioType.MENUMUSIC);
+        }
 
-            screenUI.setProgress(manager.getProgress());
+        screenUI.setProgress(manager.getProgress());
 
 //        // Проверяем, завершена ли загрузка ресурсов
 //        if (assMan.manager.update()) {

@@ -6,10 +6,12 @@ public enum ScreenType {
     GAME(GameScreen.class),
     MENU(MenuScreen.class),
     LOADING(LoadingScreen.class);
+//    GAMEOVER(GameOver.class),
+//    WIN(WinScreen.class);
 
-    private final Class<? extends AbstractScreen> screenClass;
+    private final Class<? extends Screen> screenClass;
 
-    ScreenType(final Class<? extends AbstractScreen> screenClass) {
+    ScreenType(final Class<? extends Screen> screenClass) {
         this.screenClass = screenClass;
     }
 

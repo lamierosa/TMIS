@@ -25,33 +25,29 @@ public abstract class AbstractScreen<T extends Table> implements Screen, GameKey
     protected final Box2DDebugRenderer box2DDebugRenderer;
 
 
-    public AbstractScreen(Main context) {
+    public AbstractScreen(final Main context) {
         this.context = context;
         viewport = context.getScreenViewport();
         this.world = context.getWorld();
-        inputManager = context.getInputManager();
         this.box2DDebugRenderer = context.getBox2DDebugRenderer();
-        screenUI = getScreenUI(context);
+        inputManager = context.getInputManager();
         stage = context.getStage();
+        screenUI = getScreenUI(context);
 
         Gdx.input.setInputProcessor(new InputMultiplexer(inputManager, stage));
         audioManager = context.getAudioManager();
     }
 
-    protected abstract T getScreenUI(final Main context);
-
-
-
     @Override
-    public void resize(int width, int height) {
-        viewport.update(width, height);
-        stage.getViewport().update(width, height, true);
+    public void render(float delta) {
+        stage.act(delta);
+        stage.draw();
     }
 
     @Override
-    public void show() {
-        inputManager.addInputListener(this);
-        stage.addActor(screenUI);
+    public void resize(final int width, final int height) {
+        viewport.update(width, height);
+        stage.getViewport().update(width, height, true);
     }
 
     @Override
@@ -61,8 +57,15 @@ public abstract class AbstractScreen<T extends Table> implements Screen, GameKey
     }
 
     @Override
-    public void render(float delta) {
-        stage.act(delta);
-        stage.draw();
+    public void show() {
+        inputManager.addInputListener(this);
+        stage.addActor(screenUI);
+    }
+
+    protected abstract T getScreenUI(final Main context);
+
+    @Override
+    public void dispose() {
+
     }
 }

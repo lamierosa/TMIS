@@ -7,6 +7,7 @@ import com.LAMIEGames.TMIS.Main;
 import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.ecs.components.AnimationComponent;
 import com.LAMIEGames.TMIS.ecs.components.B2DComponent;
+import com.LAMIEGames.TMIS.ecs.components.GameObjectComponent;
 import com.LAMIEGames.TMIS.maps.MapRenderer;
 import com.LAMIEGames.TMIS.maps.MapType;
 import com.badlogic.ashley.core.Entity;
@@ -57,6 +58,10 @@ public class GameRenderer implements Disposable {
         batch = context.getSpriteBatch();
         gameCamera = context.getGameCamera();
         regionCache = new ObjectMap<String, TextureRegion[][]>();
+        animationCache = new EnumMap<AnimationType, Animation<Sprite>>(AnimationType.class);
+
+        animateEntities = context.getEcsEngine().getEntitiesFor(Family.all(
+            AnimationComponent.class, B2DComponent.class).exclude(GameObjectComponent.class).get());
 
         // Инициализация MapRenderer
         this.mapRenderer = new MapRenderer(UNIT_SCALE, batch);
@@ -65,6 +70,7 @@ public class GameRenderer implements Disposable {
         //profiler
         profiler = new GLProfiler(Gdx.graphics);
         profiler.enable();
+
         if (profiler.isEnabled()) {
             box2DDebugRenderer = new Box2DDebugRenderer();
             world = context.getWorld();
@@ -73,31 +79,26 @@ public class GameRenderer implements Disposable {
             world = null;
         }
 
-        animationCache = new EnumMap<AnimationType, Animation<Sprite>>(AnimationType.class);
-
-        animateEntities = context.getEcsEngine().getEntitiesFor(Family.all(
-            AnimationComponent.class, B2DComponent.class).get());
-
     }
 
     public void render(final float delta) {
         Gdx.gl.glClearColor(0,0,0,0);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        batch.setProjectionMatrix(gameCamera.combined);
+//        batch.setProjectionMatrix(gameCamera.combined);
 
         screenViewport.apply(false);
         batch.begin();
-        if (mapRenderer != null) {
-            mapRenderer.render();
-        }
+//        if (mapRenderer != null) {
+//            mapRenderer.render();
+//        }
 
 //        for (final Entity entity :gameObjectEntities) {
 //            renderGameObject(entity, alpha);
 //        }
         for (final Entity entity: animateEntities) {
-            renderEntity(entity, alpha);
             final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
+            renderEntity(entity, alpha);
         }
         batch.end();
 
@@ -127,8 +128,8 @@ public class GameRenderer implements Disposable {
             final Animation<Sprite> animation = getAnimation(animationComponent.animationType);
             final Sprite frame = animation.getKeyFrame(animationComponent.animationTime);
             b2DComponent.renderPosition.lerp(b2DComponent.body.getPosition(), alpha);
-            frame.setBounds(b2DComponent.renderPosition.x - animationComponent.width * 2f,
-            b2DComponent.renderPosition.y - b2DComponent.height * 2f, animationComponent.width, animationComponent.height);
+            frame.setBounds(b2DComponent.renderPosition.x - animationComponent.width * 0.75f,
+            b2DComponent.renderPosition.y - b2DComponent.height * 0.75f, animationComponent.width, animationComponent.height);
             frame.draw(batch);
         }
     }
@@ -151,7 +152,8 @@ public class GameRenderer implements Disposable {
         animation.setPlayMode(Animation.PlayMode.LOOP);
         animationCache.put(animationType, animation);
 
-        }return animation;
+        }
+        return animation;
     }
 
     private Sprite[] getKeyFrames(final TextureRegion[] textureRegion) {
@@ -163,7 +165,6 @@ public class GameRenderer implements Disposable {
             sprite.setOriginCenter();
             keyFrames[i++] = sprite;
         }
-
         return keyFrames;
     }
 

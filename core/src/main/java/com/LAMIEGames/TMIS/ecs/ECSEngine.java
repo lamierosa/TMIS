@@ -53,9 +53,8 @@ public class ECSEngine extends PooledEngine {
         super();
 
         world = context.getWorld();
-
-        bodyDef = BODY_DEF;
-        fixtureDef = FIXTURE_DEF;
+        bodyDef = context.BODY_DEF;
+        fixtureDef = context.FIXTURE_DEF;
 
         localPosition = new Vector2();
         posBeforeRotation = new Vector2();
@@ -72,19 +71,19 @@ public class ECSEngine extends PooledEngine {
         player = this.createEntity();
 
         //player component
-        PlayerComponent playerComponent = this.createComponent(PlayerComponent.class);
+        final PlayerComponent playerComponent = this.createComponent(PlayerComponent.class);
         playerComponent.speed.set(3,3);
         player.add(playerComponent);
 
         //box2d component
-        Main.resetBodieAndFixtureDefinition();
+        Main.resetBodiesAndFixtureDefinition();
 
         final B2DComponent b2DComponent = this.createComponent(B2DComponent.class);
         bodyDef.position.set(playerSpawnLocation.x, playerSpawnLocation.y + (height * 0.5f));
         bodyDef.fixedRotation = true;
         bodyDef.type = BodyDef.BodyType.DynamicBody;
         b2DComponent.body = world.createBody(bodyDef);
-        b2DComponent.body.setUserData("PLAYER");
+        b2DComponent.body.setUserData(player);
         b2DComponent.width = width;
         b2DComponent.height = height;
         b2DComponent.renderPosition.set(b2DComponent.body.getPosition());
@@ -92,7 +91,7 @@ public class ECSEngine extends PooledEngine {
         fixtureDef.filter.categoryBits = BIT_PLAYER;
         fixtureDef.filter.maskBits = BIT_GROUND| BIT_GAME_OBJECT;
         final PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(width * 0.5f, height * 0.5f);
+        polygonShape.setAsBox(0.5f, 0.5f);
         fixtureDef.shape = polygonShape;
         b2DComponent.body.createFixture(fixtureDef);
         polygonShape.dispose();
@@ -118,7 +117,7 @@ public class ECSEngine extends PooledEngine {
         animationComponent.height = gameObject.getHeight();
         gameObjEntity.add(animationComponent);
 
-        Main.resetBodieAndFixtureDefinition();
+        Main.resetBodiesAndFixtureDefinition();
         final float halfW = gameObject.getWidth() * 0.5f;
         final float halfH = gameObject.getHeight() * 0.5f;
         final B2DComponent b2DComponent = this.createComponent(B2DComponent.class);

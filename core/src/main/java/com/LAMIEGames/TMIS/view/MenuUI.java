@@ -1,6 +1,9 @@
 package com.LAMIEGames.TMIS.view;
 
+import static com.LAMIEGames.TMIS.ecs.ECSEngine.player;
+
 import com.LAMIEGames.TMIS.Main;
+import com.LAMIEGames.TMIS.PreferenceManager;
 import com.LAMIEGames.TMIS.screen.ScreenType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -17,11 +20,13 @@ import com.badlogic.gdx.utils.reflect.ReflectionException;
 
 public class MenuUI extends Table {
     private final TextButton playNewButton;
-//    private final TextButton playSavedButton;
+    private final TextButton playSavedButton;
     private final TextButton musicButton;
     private final TextButton exitButton;
 
     private final TextButton title;
+    private final PreferenceManager preferenceManager;
+    private Table mainTable;
 
     private Main context;
 
@@ -29,21 +34,30 @@ public class MenuUI extends Table {
         super(context.getSkin());
         setFillParent(true);
         this.context = context;
+        preferenceManager = new PreferenceManager();
+
         this.setBackground(new NinePatchDrawable(new NinePatch(new Texture
             ("ui/menu_sprite.png"), 1, 1, 1, 1)));
         title = new TextButton("This Morning in Samsara", context.getSkin(), "huge");
+
+        mainTable = new Table();
+        add(mainTable).top().left().expand().padTop(200).padLeft(100);
+
         title.getLabel().setWrap(true);
-        add(title).width(500).left().row();
+        mainTable.add(title).width(500).left().row();
 
         Gdx.input.setInputProcessor(new InputMultiplexer(context.getInputManager(), context.getStage()));
 
-        playNewButton = new TextButton("Play", context.getSkin(), "normal");
+        playNewButton = new TextButton("New game", context.getSkin(), "big");
         playNewButton.getLabel().setWrap(true);
 
-        musicButton = new TextButton("Settings", context.getSkin(), "normal");
+        playSavedButton = new TextButton("Load game", context.getSkin(), "big");
+        playNewButton.getLabel().setWrap(true);
+
+        musicButton = new TextButton("Music", context.getSkin(), "big");
         musicButton.getLabel().setWrap(true);
 
-        exitButton = new TextButton("Exit", context.getSkin(), "normal");
+        exitButton = new TextButton("Exit", context.getSkin(), "big");
         exitButton.getLabel().setWrap(true);
 
         playNewButton.addListener(new ChangeListener() {
@@ -57,8 +71,21 @@ public class MenuUI extends Table {
              }
         });
 
-        add(playNewButton).width(200).height(50).pad(10).center().row();
-        add(musicButton).width(200).height(50).pad(10).center().row();
-        add(exitButton).width(200).height(50).pad(10).center().row();
+        playSavedButton.addListener(new ChangeListener() {
+             @Override
+             public void changed(ChangeEvent event, Actor actor) {
+                 try {
+//                     preferenceManager.loadGameState(player);
+                    context.setScreen(ScreenType.GAME);
+                 } catch (ReflectionException e) {
+                    throw new RuntimeException("Failed to load GAME screen", e);
+                 }
+             }
+        });
+
+        mainTable.add(playNewButton).width(400).height(50).pad(10).padTop(50).center().row();
+        mainTable.add(playSavedButton).width(200).height(50).pad(10).center().row();
+        mainTable.add(musicButton).width(200).height(50).pad(10).center().row();
+        mainTable.add(exitButton).width(200).height(50).pad(10).center().row();
     }
 }

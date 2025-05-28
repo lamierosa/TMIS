@@ -89,6 +89,16 @@
     "musicButton": {
       "down": "Music_sprite",
       "up": "Music_sprite"
+    },
+    "textPanelButton": {
+      "down": "TextPanel_sprite",
+      "up": "TextPanel_sprite"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "default": {
+      "font": "font_32",
+      "fontColor": "white"
     }
   }
 }
