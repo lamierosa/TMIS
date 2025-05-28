@@ -2,6 +2,8 @@ package com.LAMIEGames.TMIS.view;
 
 import com.LAMIEGames.TMIS.Main;
 import com.LAMIEGames.TMIS.PreferenceManager;
+import com.LAMIEGames.TMIS.audio.AudioManager;
+import com.LAMIEGames.TMIS.audio.AudioType;
 import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.input.GameKeys;
 import com.LAMIEGames.TMIS.input.InputManager;
@@ -13,7 +15,10 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
+import com.badlogic.gdx.scenes.scene2d.Event;
+import com.badlogic.gdx.scenes.scene2d.EventListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
+import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
@@ -38,8 +43,10 @@ public class GameUI extends Table {
     private Button leftButton;
     private Button toolBarButton;
     private Button backButton;
+    private TextButton musicButton;
     private TextButton resumeButton;
     private TextButton saveAndExitButton;
+    private CheckBox musicCheckbox;
     public int paperCount;
     private Label paperCountLabel;
     private ECSEngine ecsEngine;
@@ -47,7 +54,7 @@ public class GameUI extends Table {
     private Button textPanel;
 
     private final PreferenceManager preferenceManager;
-
+    private final AudioManager audioManager;
 
     public GameUI(final Main context) {
         super(context.getSkin());
@@ -58,10 +65,12 @@ public class GameUI extends Table {
 
         atlasMap = new TextureAtlas(Gdx.files.internal("map/map.atlas"));
         preferenceManager = new PreferenceManager();
+        audioManager = new AudioManager(context);
         ecsEngine = context.getEcsEngine();
         player = setPlayer(player);
 
         //buttons
+        musicButton = new TextButton("Music", context.getSkin(), "normalWhite");
         upButton = new Button(context.getSkin(), "up");
         downButton = new Button(context.getSkin(), "down");
         rightButton = new Button(context.getSkin(), "right");
@@ -169,6 +178,22 @@ public class GameUI extends Table {
             }
         });
 
+        musicCheckbox = new CheckBox(null, context.getSkin());
+        musicCheckbox.setChecked( context.getPreferences().isMusicEnabled() );
+        musicCheckbox.addListener( new EventListener() {
+            @Override
+            public boolean handle(Event event) {
+                boolean enabled = musicCheckbox.isChecked();
+                context.getPreferences().setMusicEnabled( enabled );
+                if (enabled) {
+                    audioManager.playAudio(AudioType.GAMEMUSIC);
+                } else {
+                    audioManager.stopCurrentMusic();
+                }
+                return false;
+            }
+        });
+
         optionsTable = new Table();
         toolBarTable.add(optionsTable).expand().width(400).height(400);
         optionsTable.setBackground(new NinePatchDrawable(new NinePatch(new Texture
@@ -176,6 +201,8 @@ public class GameUI extends Table {
 
         optionsTable.add(resumeButton).width(200).height(50).pad(10).row();
         optionsTable.add(saveAndExitButton).width(200).height(50).pad(10).row();
+        optionsTable.add(musicButton).width(200).height(50).pad(10).center();
+        optionsTable.add(musicCheckbox).width(50).height(50).pad(10).row();
         makeVisibleOptions(false);
     }
 

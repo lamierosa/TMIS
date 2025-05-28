@@ -76,6 +76,7 @@ public class Main extends Game {
     public AssetManager assetManager;
     private InputManager inputManager;
     private AudioManager audioManager;
+    private AppPreferences preferences;
     private PreferenceManager preferenceManager;
 
     private ECSEngine ecsEngine;
@@ -120,6 +121,7 @@ public class Main extends Game {
         ecsEngine = new ECSEngine(this);
 
         preferenceManager = new PreferenceManager();
+        preferences = new AppPreferences();
 
         screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
         try {
@@ -217,6 +219,9 @@ public class Main extends Game {
         return skin;
     }
 
+    public AppPreferences getPreferences() {
+        return this.preferences;
+    }
     public SpriteBatch getSpriteBatch() {
         return batch;
     }

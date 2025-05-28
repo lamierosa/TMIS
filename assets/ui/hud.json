@@ -100,5 +100,13 @@
       "font": "font_32",
       "fontColor": "white"
     }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.CheckBox$CheckBoxStyle": {
+    "default": {
+      "checkboxOn": "checked_checkbox",
+      "checkboxOff": "uchecked_checkbox",
+      "font": "font_32",
+      "fontColor": "white"
+    }
   }
 }
