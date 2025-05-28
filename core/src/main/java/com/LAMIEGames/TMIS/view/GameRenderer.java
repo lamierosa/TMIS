@@ -8,8 +8,6 @@ import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.ecs.components.AnimationComponent;
 import com.LAMIEGames.TMIS.ecs.components.B2DComponent;
 import com.LAMIEGames.TMIS.ecs.components.GameObjectComponent;
-import com.LAMIEGames.TMIS.maps.MapRenderer;
-import com.LAMIEGames.TMIS.maps.MapType;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
@@ -43,7 +41,6 @@ public class GameRenderer implements Disposable {
 
     private ObjectMap<String, TextureRegion[][]> regionCache;
     private final ImmutableArray<Entity> animateEntities;
-    private final MapRenderer mapRenderer;
 
     private final Box2DDebugRenderer box2DDebugRenderer;
     private final World world;
@@ -63,8 +60,7 @@ public class GameRenderer implements Disposable {
         animateEntities = context.getEcsEngine().getEntitiesFor(Family.all(
             AnimationComponent.class, B2DComponent.class).exclude(GameObjectComponent.class).get());
 
-        // Инициализация MapRenderer
-        this.mapRenderer = new MapRenderer(UNIT_SCALE, batch);
+
 //        context.getMapManager().addMapListener(this);
 
         //profiler
@@ -89,16 +85,14 @@ public class GameRenderer implements Disposable {
 
         screenViewport.apply(false);
         batch.begin();
-//        if (mapRenderer != null) {
-//            mapRenderer.render();
-//        }
+
 
 //        for (final Entity entity :gameObjectEntities) {
 //            renderGameObject(entity, alpha);
 //        }
         for (final Entity entity: animateEntities) {
-            final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
             renderEntity(entity, alpha);
+            final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
         }
         batch.end();
 
@@ -173,10 +167,6 @@ public class GameRenderer implements Disposable {
         if (box2DDebugRenderer != null) {
             box2DDebugRenderer.dispose();
         }
-        if (mapRenderer != null) {
-            mapRenderer.dispose();
-        }
-
     }
 
 //    // Метод для получения текстуры из кэша

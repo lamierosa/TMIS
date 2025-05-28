@@ -9,31 +9,32 @@ import com.LAMIEGames.TMIS.audio.AudioType;
 import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.input.GameKeys;
 import com.LAMIEGames.TMIS.input.InputManager;
-import com.LAMIEGames.TMIS.maps.MapRenderer;
+import com.LAMIEGames.TMIS.maps.Map;
+import com.LAMIEGames.TMIS.maps.MapListener;
+import com.LAMIEGames.TMIS.maps.MapManager;
 import com.LAMIEGames.TMIS.maps.MapType;
 import com.LAMIEGames.TMIS.view.GameUI;
 import com.badlogic.ashley.core.Entity;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Vector2;
 
-public class GameScreen extends AbstractScreen{
-    private final MapRenderer mapRenderer;
+public class GameScreen extends AbstractScreen implements MapListener {
     //todo: добавить карты на экран
     private Entity player;
     private final AssetManager manager;
+    private final MapManager mapManager;
     private boolean isMusicLoaded;
-    private GameUI gameUI;
+    PreferenceManager preferenceManager;
 
     public GameScreen(Main context) {
         super(context);
         this.manager = context.getAssetManager();
-//        //map renderer доработать
-        mapRenderer = new MapRenderer(UNIT_SCALE, context.getSpriteBatch());
-        mapRenderer.setMap(MapType.ROOM);
+
+        mapManager = context.getMapManager();
+        mapManager.addMapListener(this);
+        mapManager.setMap(MapType.MAP_DREAM);
+        preferenceManager = new PreferenceManager();
 
         isMusicLoaded = false;
         for (final AudioType audioType : AudioType.values()) {
@@ -41,10 +42,10 @@ public class GameScreen extends AbstractScreen{
                 manager.load(audioType.getFilePath(), Music.class);
             }
         }
-        //todo: сделать что-то со со стартовой локацией потому что map у меня нету
 
-        player = context.getEcsEngine().createPlayer(new Vector2(100,100),1f,1f);
-        context.getGameCamera().position.set((new Vector2(100,100)), 0);
+        player = context.getEcsEngine().createPlayer(mapManager.getCurrentMap().getPlayerStartLocation(),1f,1f);
+        context.getGameCamera().position.set((mapManager.getCurrentMap().getPlayerStartLocation()), 0);
+        audioManager.playAudio(AudioType.GAMEMUSIC);
     }
 
     public static Entity getPlayer(final Entity player) {
@@ -54,13 +55,9 @@ public class GameScreen extends AbstractScreen{
     @Override
     public void render(float delta) {
         super.render(delta);
-        context.getGameRenderer().render(alpha);
-        manager.update();
 
-        if (!isMusicLoaded && manager.isLoaded(AudioType.GAMEMUSIC.getFilePath())) {
-            isMusicLoaded = true;
-            audioManager.playAudio(AudioType.GAMEMUSIC);
-        }
+        context.getGameRenderer().render(alpha);
+//
 //        Texture texture = new Texture(Gdx.files.internal("map/map.png"));
 
 //        if(Gdx.input.isKeyJustPressed(Input.Keys.P)) {
@@ -74,14 +71,19 @@ public class GameScreen extends AbstractScreen{
 
         ((GameUI) screenUI).addPaper(ECSEngine.playerCmpMapper.get(player).paperCount);
 
-
 //        viewport.apply(true);
 
     }
 
     @Override
-    public void resize(int width, int height) {
+    public void show() {
+        super.show();
+    }
 
+    @Override
+    public void hide() {
+        super.hide();
+        audioManager.stopCurrentMusic();
     }
 
     @Override
@@ -113,6 +115,11 @@ public class GameScreen extends AbstractScreen{
 
     @Override
     public void keyUp(final InputManager inputManager,final GameKeys gameKeys) {
+
+    }
+
+    @Override
+    public void mapChange(Map map) {
 
     }
 }

@@ -50,12 +50,10 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         manager.update();
-
         if (!isMusicLoaded && manager.isLoaded(AudioType.MENUMUSIC.getFilePath())) {
             isMusicLoaded = true;
             audioManager.playAudio(AudioType.MENUMUSIC);
         }
-
         screenUI.setProgress(manager.getProgress());
 
 //        // Проверяем, завершена ли загрузка ресурсов

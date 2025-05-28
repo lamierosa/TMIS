@@ -4,6 +4,7 @@ import com.LAMIEGames.TMIS.audio.AudioManager;
 import com.LAMIEGames.TMIS.audio.AudioType;
 import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.input.InputManager;
+import com.LAMIEGames.TMIS.maps.MapManager;
 import com.LAMIEGames.TMIS.screen.AbstractScreen;
 import com.LAMIEGames.TMIS.screen.MenuScreen;
 import com.LAMIEGames.TMIS.screen.ScreenType;
@@ -81,6 +82,7 @@ public class Main extends Game {
 
     private ECSEngine ecsEngine;
 
+    private MapManager mapManager;
     private GameRenderer gameRenderer;
 
     @Override
@@ -98,9 +100,7 @@ public class Main extends Game {
         box2DDebugRenderer = new Box2DDebugRenderer();
 
         assetManager = new AssetManager();
-        assetManager.load("data/player/xana/player_xana.atlas", TextureAtlas.class);
-
-//        manager.setLoader(TiledMap.class, new TmxMapLoader(manager.getFileHandleResolver()));
+        assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
 
         initializeSkin();
 
@@ -119,6 +119,7 @@ public class Main extends Game {
 
         //ecs engine
         ecsEngine = new ECSEngine(this);
+        mapManager = new MapManager(this);
 
         preferenceManager = new PreferenceManager();
         preferences = new AppPreferences();
@@ -132,8 +133,6 @@ public class Main extends Game {
 
         //game renderer
         gameRenderer = new GameRenderer(this);
-
-//        texture = new Texture(Gdx.files.internal("data/map/map.png"));
     }
 
     public static void resetBodiesAndFixtureDefinition() {
@@ -240,6 +239,10 @@ public class Main extends Game {
 
     public Box2DDebugRenderer getBox2DDebugRenderer() {
         return box2DDebugRenderer;
+    }
+
+    public MapManager getMapManager() {
+        return this.mapManager;
     }
 
     public void setScreen(final ScreenType screenType) throws ReflectionException {
