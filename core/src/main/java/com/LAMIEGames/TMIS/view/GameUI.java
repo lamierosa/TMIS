@@ -139,7 +139,7 @@ public class GameUI extends Table {
         add(controlsTable).bottom().left().padBottom(30);
         add(textPanelTable).right().expandX().padTop(200).padRight(60);
         textPanel.getColor().a = 0.7f;
-        textPanelTable.add(textPanel).bottom().right().expand().width(1200).height(400).padBottom(40);
+        textPanelTable.add(textPanel).bottom().right().expand().width(1200).height(350).padBottom(40);
         this.row();
 
 //        initControls();
