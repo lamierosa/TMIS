@@ -135,8 +135,6 @@ public class Map {
         return new Vector2(x, y);
     }
 
-
-
     /*
     private Vector2 parsePlayerStartLocation() {
         float x = 0;

@@ -42,17 +42,21 @@ public class PlayerMovementSystem extends IteratingSystem implements GameKeyInpu
     public void keyPressed(InputManager inputManager, GameKeys gameKeys) {
         switch (gameKeys) {
             case LEFT:
-//                directionChange = true;
-                xFactor = -1;
-            case RIGHT:
-//                directionChange = true;
+                directionChange = true;
                 xFactor = 1;
+                break;
+            case RIGHT:
+                directionChange = true;
+                xFactor = -1;
+                break;
             case DOWN:
-//                directionChange = true;
+                directionChange = true;
                 yFactor = -1;
+                break;
             case UP:
-//                directionChange = true;
+                directionChange = true;
                 yFactor = 1;
+                break;
             default:
                 //nothing to do
                 return;
@@ -65,16 +69,20 @@ public class PlayerMovementSystem extends IteratingSystem implements GameKeyInpu
         switch (gameKeys) {
             case LEFT:
                 directionChange = true;
-                xFactor = inputManager.isKeyPressed(GameKeys.RIGHT) ? 1 : 0;
+                xFactor = inputManager.isKeyPressed(GameKeys.RIGHT) ? -1 : 0;
+                break;
             case RIGHT:
                 directionChange = true;
-                xFactor = inputManager.isKeyPressed(GameKeys.LEFT) ? -1 : 0;
+                xFactor = inputManager.isKeyPressed(GameKeys.LEFT) ? 1 : 0;
+                break;
             case DOWN:
                 directionChange = true;
                 yFactor = inputManager.isKeyPressed(GameKeys.UP) ? 1 : 0;
+                break;
             case UP:
                 directionChange = true;
                 yFactor = inputManager.isKeyPressed(GameKeys.DOWN) ? -1 : 0;
+                break;
             default:
                 //nothing to do
                 break;

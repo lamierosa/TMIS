@@ -8,6 +8,8 @@ import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.ecs.components.AnimationComponent;
 import com.LAMIEGames.TMIS.ecs.components.B2DComponent;
 import com.LAMIEGames.TMIS.ecs.components.GameObjectComponent;
+import com.LAMIEGames.TMIS.maps.Map;
+import com.LAMIEGames.TMIS.maps.MapListener;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.Family;
 import com.badlogic.ashley.utils.ImmutableArray;
@@ -21,15 +23,21 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.graphics.profiling.GLProfiler;
+import com.badlogic.gdx.maps.tiled.TiledMapTileLayer;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.tiles.AnimatedTiledMapTile;
+import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Disposable;
+import com.badlogic.gdx.utils.IntMap;
 import com.badlogic.gdx.utils.ObjectMap;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import java.util.EnumMap;
 
-public class GameRenderer implements Disposable {
+public class GameRenderer implements Disposable, MapListener {
     public static final String TAG = GameRenderer.class.getSimpleName();
 
     private final OrthographicCamera gameCamera;
@@ -38,12 +46,16 @@ public class GameRenderer implements Disposable {
     private final AssetManager assetManager;
     private final EnumMap<AnimationType, Animation<Sprite>> animationCache;
     private final GLProfiler profiler;
+    private final OrthogonalTiledMapRenderer mapRenderer;
+    private final Array<TiledMapTileLayer> tiledMapLayers;
 
     private ObjectMap<String, TextureRegion[][]> regionCache;
     private final ImmutableArray<Entity> animateEntities;
+    private final ImmutableArray<Entity> gameObjectEntities;
 
     private final Box2DDebugRenderer box2DDebugRenderer;
     private final World world;
+    private IntMap<Animation<Sprite>> mapAnimations;
 
     public GameRenderer(final Main context) {
 
@@ -57,10 +69,14 @@ public class GameRenderer implements Disposable {
         regionCache = new ObjectMap<String, TextureRegion[][]>();
         animationCache = new EnumMap<AnimationType, Animation<Sprite>>(AnimationType.class);
 
+        gameObjectEntities = context.getEcsEngine().getEntitiesFor(Family.all(GameObjectComponent.class, B2DComponent.class, AnimationComponent.class).get());
         animateEntities = context.getEcsEngine().getEntitiesFor(Family.all(
             AnimationComponent.class, B2DComponent.class).exclude(GameObjectComponent.class).get());
 
-
+        mapRenderer = new OrthogonalTiledMapRenderer(null, UNIT_SCALE, batch);
+        context.getMapManager().addMapListener((MapListener) this);
+        //mapRenderer.setMap(mainGame.getMapManager().getTiledMap());
+        tiledMapLayers = new Array<TiledMapTileLayer>();
 //        context.getMapManager().addMapListener(this);
 
         //profiler
@@ -84,12 +100,19 @@ public class GameRenderer implements Disposable {
 //        batch.setProjectionMatrix(gameCamera.combined);
 
         screenViewport.apply(false);
+        mapRenderer.setView(gameCamera);
         batch.begin();
 
+        if (mapRenderer.getMap() != null) {
+            AnimatedTiledMapTile.updateAnimationBaseTime();
+            for (final TiledMapTileLayer layer : tiledMapLayers) {
+                mapRenderer.renderTileLayer(layer);
+            }
+        }
 
-//        for (final Entity entity :gameObjectEntities) {
-//            renderGameObject(entity, alpha);
-//        }
+        for (final Entity entity :gameObjectEntities) {
+            renderGameObject(entity, alpha);
+        }
         for (final Entity entity: animateEntities) {
             renderEntity(entity, alpha);
             final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
@@ -114,7 +137,24 @@ public class GameRenderer implements Disposable {
         }
     }
 
-    private void renderEntity(final Entity entity, final float alpha) {
+    private void renderGameObject(final Entity entity, final float alpha) {
+        final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
+        final AnimationComponent animationComponent = ECSEngine.animationCmpMapper.get(entity);
+        final GameObjectComponent gameObjectComponent = ECSEngine.gameObjCmpMapper.get(entity);
+
+        if (gameObjectComponent.animationIndex != -1) {
+            final Animation<Sprite> animation = mapAnimations.get(gameObjectComponent.animationIndex);
+            final Sprite frame = animation.getKeyFrame(animationComponent.animationTime);
+
+            frame.setBounds(b2DComponent.renderPosition.x, b2DComponent.renderPosition.y, animationComponent.width, animationComponent.height);
+            frame.setOriginCenter();
+            frame.setRotation(b2DComponent.body.getAngle() * MathUtils.radDeg);
+            frame.draw(batch);
+        }
+    }
+
+
+        private void renderEntity(final Entity entity, final float alpha) {
         final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
         final AnimationComponent animationComponent = ECSEngine.animationCmpMapper.get(entity);
 
@@ -167,6 +207,7 @@ public class GameRenderer implements Disposable {
         if (box2DDebugRenderer != null) {
             box2DDebugRenderer.dispose();
         }
+        mapRenderer.dispose();
     }
 
 //    // Метод для получения текстуры из кэша
@@ -178,9 +219,11 @@ public class GameRenderer implements Disposable {
 //    public void addTextureToCache(String regionName, TextureRegion[][] textureRegions) {
 //        regionCache.put(regionName, textureRegions);
 //    }
-//
-//    public void mapChange(MapType mapType) {
-//        mapRenderer.setMap(mapType);
-//
-//    }
+
+    @Override
+    public void mapChange(Map map) {
+        mapRenderer.setMap(map.getTiledMap());
+        map.getTiledMap().getLayers().getByType(TiledMapTileLayer.class, tiledMapLayers);
+        mapAnimations = map.getMapAnimations();
+    }
 }
