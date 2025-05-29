@@ -101,6 +101,7 @@ public class Main extends Game {
 
         assetManager = new AssetManager();
         assetManager.setLoader(TiledMap.class, new TmxMapLoader(assetManager.getFileHandleResolver()));
+        assetManager.load("data/player/xana/player_xana.atlas", TextureAtlas.class);
 
         initializeSkin();
 

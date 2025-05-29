@@ -65,6 +65,7 @@ public class MapManager {
         if (currentMap == null) {
             Gdx.app.debug(TAG, "Creating the type " + type);
             assetManager.load(type.getFilePath(), TiledMap.class);
+            assetManager.finishLoading();
             tiledMap = assetManager.get(type.getFilePath(), TiledMap.class);
             currentMap = new Map(tiledMap);
             mapCache.put(type, currentMap);
