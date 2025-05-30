@@ -74,7 +74,7 @@ public class WorldContactListener implements ContactListener {
 
     @Override
     public void preSolve(Contact contact, Manifold oldManifold) {
-        contact.setEnabled(false);
+//        contact.setEnabled(false);
 
     }
 

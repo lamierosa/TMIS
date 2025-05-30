@@ -83,7 +83,7 @@ public class MenuUI extends Table {
              @Override
              public void changed(ChangeEvent event, Actor actor) {
                  try {
-//                     preferenceManager.loadGameState(player);
+                     preferenceManager.loadGameState(player);
                     context.setScreen(ScreenType.GAME);
                  } catch (ReflectionException e) {
                     throw new RuntimeException("Failed to load GAME screen", e);

@@ -38,7 +38,6 @@ public class GameUI extends Table {
     private Table controlsTable;
     private Table directionTable;
     private Table textPanelTable;
-    private Table map;
     private Button upButton;
     private Button downButton;
     private Button rightButton;
@@ -82,7 +81,6 @@ public class GameUI extends Table {
         paperCountLabel = new Label("Paper count: " + paperCount, context.getSkin());
         textPanel = new Button(context.getSkin(), "textPanelButton");
 
-        map = new Table();
         textPanelTable = new Table();
 
         mainTable = new Table();
@@ -99,25 +97,8 @@ public class GameUI extends Table {
         this.row();
 
         init(context);
-
-
-//        mainTable.add(map).expand().center().padRight(400);
-//        initMap();
-
-
     }
 
-    private void initMap() {
-        TextureRegionDrawable roomRegion = new TextureRegionDrawable(atlasMap.findRegion("Room_sprite_without_sun"));
-        Image room = new Image(roomRegion);
-
-        TextureRegionDrawable hallwayRegion = new TextureRegionDrawable(atlasMap.findRegion("Hallway_sprite"));
-        Image hallway = new Image(hallwayRegion);
-
-        map.add(room).width(800).height(800).expand().fill().center().pad(10);
-        map.row(); // Переход на новую строку
-//        map.add(hallway).expand().center().pad(10);
-    }
 
     public void init(final Main context) {
         toolBarButton.addListener(new ChangeListener() {
@@ -214,7 +195,7 @@ public class GameUI extends Table {
             public void changed(ChangeEvent event, Actor actor) {
                 showOptionBar(false);
                 try {
-//                    preferenceManager.saveGameState(player);
+                    preferenceManager.saveGameState(player);
                     context.setScreen(ScreenType.MENU);
                 } catch (ReflectionException e) {
                     throw new RuntimeException("Failed to go on MENU", e);
