@@ -17,6 +17,8 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Event;
 import com.badlogic.gdx.scenes.scene2d.EventListener;
+import com.badlogic.gdx.scenes.scene2d.InputEvent;
+import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.ui.Button;
 import com.badlogic.gdx.scenes.scene2d.ui.CheckBox;
 import com.badlogic.gdx.scenes.scene2d.ui.Image;
@@ -142,7 +144,57 @@ public class GameUI extends Table {
         textPanelTable.add(textPanel).bottom().right().expand().width(1200).height(350).padBottom(40);
         this.row();
 
-//        initControls();
+        initControls(context);
+    }
+
+    private void initControls(final Main context) {
+        upButton.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                context.getInputManager().notifyKeyDown(GameKeys.UP);
+                return true;
+            }
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                context.getInputManager().notifyKeyUp(GameKeys.UP);
+            }
+        });
+
+        downButton.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                context.getInputManager().notifyKeyDown(GameKeys.DOWN);
+                return true;
+            }
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                context.getInputManager().notifyKeyUp(GameKeys.DOWN);
+            }
+        });
+
+        rightButton.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                context.getInputManager().notifyKeyDown(GameKeys.LEFT);
+                return true;
+            }
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                context.getInputManager().notifyKeyUp(GameKeys.LEFT);
+            }
+        });
+
+        leftButton.addListener(new InputListener() {
+            @Override
+            public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                context.getInputManager().notifyKeyDown(GameKeys.RIGHT);
+                return true;
+            }
+            @Override
+            public void touchUp(InputEvent event, float x, float y, int pointer, int button) {
+                context.getInputManager().notifyKeyUp(GameKeys.RIGHT);
+            }
+        });
     }
 
 

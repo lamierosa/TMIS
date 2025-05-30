@@ -9,6 +9,7 @@ import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.MapProperties;
+import com.badlogic.gdx.maps.objects.PolygonMapObject;
 import com.badlogic.gdx.maps.objects.PolylineMapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.maps.tiled.TiledMapTile;
 import com.badlogic.gdx.maps.tiled.objects.TiledMapTileMapObject;
 import com.badlogic.gdx.maps.tiled.tiles.AnimatedTiledMapTile;
 import com.badlogic.gdx.maps.tiled.tiles.StaticTiledMapTile;
+import com.badlogic.gdx.math.Polygon;
 import com.badlogic.gdx.math.Polyline;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -23,6 +25,7 @@ import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.IntMap;
 
 public class Map {
+
     public static  final  String TAG = Map.class.getSimpleName();
     private final TiledMap tiledMap;
     private final Array<CollisionArea> collisionAreas;
@@ -30,6 +33,7 @@ public class Map {
     private final Array<GameObjects> gameObjects;
     private final IntMap<Animation<Sprite>> mapAnimations;
     Preferences pref = Gdx.app.getPreferences("LAMIEGames_Preferences");
+
     public Map(final TiledMap tiledMap) {
         this.tiledMap = tiledMap;
         collisionAreas = new Array<>();
@@ -111,8 +115,6 @@ public class Map {
         return true;
     }
 
-
-
     private Vector2 parsePlayerStartLocation() {
         float x = 0;
         float y = 0;
@@ -174,7 +176,12 @@ public class Map {
         }
 
         for (final MapObject mapObj : mapObjects) {
-            if (mapObj instanceof  RectangleMapObject) {
+            if (mapObj instanceof  PolygonMapObject) {
+                final PolygonMapObject polygonMapObject = (PolygonMapObject) mapObj;
+                final Polygon polygon = polygonMapObject.getPolygon();
+
+                collisionAreas.add( new CollisionArea(polygon.getX(), polygon.getY(), polygon.getVertices()));
+            }else if (mapObj instanceof  RectangleMapObject) {
                 final RectangleMapObject rectangleMapObject = (RectangleMapObject) mapObj;
                 final Rectangle rectangle = rectangleMapObject.getRectangle();
                 final float[] rectVertices = new float[10];

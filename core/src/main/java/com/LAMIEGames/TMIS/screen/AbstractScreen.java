@@ -14,6 +14,8 @@ import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import com.badlogic.gdx.scenes.scene2d.ui.Table;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 
+import box2dLight.RayHandler;
+
 public abstract class AbstractScreen<T extends Table> implements Screen, GameKeyInputListener {
     protected final Main context;
     protected final FitViewport viewport;
@@ -23,12 +25,14 @@ public abstract class AbstractScreen<T extends Table> implements Screen, GameKey
     protected final InputManager inputManager;
     protected final AudioManager audioManager;
     protected final Box2DDebugRenderer box2DDebugRenderer;
+    protected final RayHandler rayHandler;
 
 
     public AbstractScreen(final Main context) {
         this.context = context;
         viewport = context.getScreenViewport();
         this.world = context.getWorld();
+        rayHandler = context.getRayHandler();
         this.box2DDebugRenderer = context.getBox2DDebugRenderer();
         inputManager = context.getInputManager();
         stage = context.getStage();

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-up" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="12">
+<map version="1.10" tiledversion="1.11.2" orientation="orthogonal" renderorder="right-up" width="64" height="64" tilewidth="32" tileheight="32" infinite="0" nextlayerid="9" nextobjectid="624">
  <tileset firstgid="1" source="tileset_map.tsx"/>
  <layer id="1" name="ground" width="64" height="64">
   <data encoding="base64" compression="zlib">
@@ -16,15 +16,1937 @@
    eJzt21sKgzAQRuGAu+j+F1r6EChB2lxm8o+ZcyBPVZvPorUWr1LKSzSuZqje99dQGFbnZOnPMLKW3V+Ph6zhx48/b/j7/Kdeg+DHH+H4x68J/zP8Xuec7P66D9Qp/apj77sev0f1Xpg6/Guvz4Z/z7Xt6jkIv0/4Y3z//wu/T9n9n+3ij18Uf9Tvh9lGtx3ZP7OP8I/7FeG3WeZuHfy28/AIv80yd+tk9o/e/8GvCb/NMm348eO3nYdH+G1+I7aN3v/Drym73yv8+PH3h/+snvL/n1fZ/bPXDaeEf+/oeSZ3x/PDPfManf/qc8tK/2mf/8g+eQOM/iI7
   </data>
  </layer>
- <layer id="3" name="foreground" width="64" height="64">
-  <data encoding="base64" compression="zlib">
-   eJztmluKhTAMQP0X3IDf3f8WB2GEEPJuWtOZHpArXq1JkzZp6nFsNptMrt+Dohmeb+CIXre8B3Ia3jOSm7kuyXGDeyC472/U/nnwzNZbg9IN6kP1G+d7XwL14GxdBU6+Xrkr+RWFNM6w7u3g5wl4P+eLkv9+iXXsSP0Reb4CFWV6yRw7FedHiWx5V9L/8ckGzjPaW40LnffmKJT9V/KJ3vzUG98vdMDrGtRa4JVbykMxVG5v7YObOZ9JhXFntddmDpXz4ZGywXVr5T544PL7LLmr6Q/lucAvN4975KfmFs+8iOMFjoO4rYu57ok7FHB916u/l4Z+IRVijIUeObF/SrXG1ZD0wPWEv6R3hP+sO4VnTFFzBzePVYtPD941iAWu/k/Ffg0uDlmfp57LQrLnO6dUyMso3TNk+lovK7Ntj1kll/Cg6b+Cb2hxX6rhPEg6rmLznrFh2Zeu3g/RvFe6fwXffxiV92kxD/53omuetaB2j7RPD20+Iv/P3GeIvpvDW3+e4c+Z/RSRN9P+7/steVdmfhhtJ+r/3v2CyP9WIvs4F/rloL5ZsBJZ8/Tg1d9qd2+7X8V9jw9oNVncbi/VYgHWW6ope+ocX9LTx177a31bGc++/Qq1AhhzrX3P7cXjdrVvRq3XR1J9nTWbkePP6svat8QPK9utquwz1l4V61/ctzwjatBe/SVbjOir0fsy0T7VfBLasHdvNzpPafdoNZqMXNG6npsxzjL9Rqspj0Kr9Ug6tsO+Vqbu0eyI86/Rc0WkrzPtQ+nXM59I+Wv0XZbcRSM6r0aw7MXMjMkzcyOqpphF9XXsZrOpwQ8zNSWr
-  </data>
- </layer>
+ <objectgroup color="#ff0000" id="7" name="collision" visible="0">
+  <object id="14" x="1952.67" y="672.667" width="30.6667" height="30"/>
+  <object id="15" x="1824.67" y="672.667" width="32" height="31.5"/>
+  <object id="16" x="1759.67" y="672.833" width="33" height="31"/>
+  <object id="17" x="1952" y="832.833" width="32" height="31"/>
+  <object id="18" x="1920.67" y="897.167" width="32" height="62"/>
+  <object id="20" x="1856.33" y="1024.33" width="31.5" height="32"/>
+  <object id="21" x="1920.67" y="1024.67" width="31.5" height="63"/>
+  <object id="23" x="1921.33" y="1248.83" width="31" height="31"/>
+  <object id="24" x="1728.67" y="1184.17" width="31" height="31.5"/>
+  <object id="26" x="1760.67" y="1279.67" width="31.6667" height="161"/>
+  <object id="27" x="1696.67" y="1376.67" width="31.6667" height="31"/>
+  <object id="29" x="1696.33" y="1472.33" width="31.6667" height="31.6667"/>
+  <object id="30" x="1920.67" y="1376.17" width="32" height="64"/>
+  <object id="31" x="1857.17" y="1535.67" width="31.5" height="32"/>
+  <object id="32" x="1920.17" y="1472.83" width="32.5" height="31.5"/>
+  <object id="33" x="1920" y="1568.33" width="32" height="31.5"/>
+  <object id="35" x="1920.67" y="1663.17" width="31.5" height="97"/>
+  <object id="36" x="1855.33" y="1695.67" width="33.5" height="33"/>
+  <object id="37" x="1824.17" y="1760.83" width="32.5" height="31.5"/>
+  <object id="38" x="1760.5" y="1696.33" width="31.5" height="31"/>
+  <object id="40" x="1695.67" y="1760.17" width="32.5" height="31"/>
+  <object id="41" x="1760.17" y="1761.5" width="31.5" height="94.5"/>
+  <object id="42" x="1695.67" y="1887.17" width="32" height="32.5"/>
+  <object id="43" x="1632.5" y="1824.67" width="31" height="31"/>
+  <object id="44" x="1505.67" y="1761.17" width="30.5" height="30.5"/>
+  <object id="45" x="1473.17" y="1665.17" width="30.5" height="62.5"/>
+  <object id="46" x="1344.17" y="1761.33" width="32.5" height="63"/>
+  <object id="48" x="1280.33" y="1856.67" width="31.5" height="31.5"/>
+  <object id="49" x="1249.33" y="1761.33" width="31.5" height="30.5"/>
+  <object id="50" x="1183.83" y="1825.17" width="31.5" height="31"/>
+  <object id="52" x="1089.17" y="1889.17" width="31" height="30.5"/>
+  <object id="53" x="926.833" y="1825.17" width="66.5" height="30.5"/>
+  <object id="54" x="960.333" y="1888.33" width="31.5" height="32"/>
+  <object id="56" x="1153.17" y="1600.67" width="31.5" height="31.5"/>
+  <object id="57" x="1024.67" y="1632.5" width="31.5" height="31.5"/>
+  <object id="58" x="1089" y="1600.67" width="31.5" height="63.5"/>
+  <object id="60" x="1152.17" y="1697.67" width="31.5" height="30.5"/>
+  <object id="61" x="1215.67" y="1632.67" width="64.5" height="31.5"/>
+  <object id="63" x="927.667" y="1728.83" width="32.5" height="31"/>
+  <object id="64" x="799.333" y="1792.83" width="33" height="31.5"/>
+  <object id="65" x="608.333" y="1695.83" width="64" height="64"/>
+  <object id="67" x="544.167" y="1696.33" width="31.5" height="32"/>
+  <object id="69" x="448.667" y="1791.83" width="31" height="31.5"/>
+  <object id="71" x="545" y="1856.67" width="30.5" height="31.5"/>
+  <object id="72" x="576.667" y="1791.67" width="31.5" height="32"/>
+  <object id="73" x="448.5" y="1664.33" width="31" height="31.5"/>
+  <object id="74" x="417.167" y="1568.33" width="30.5" height="31"/>
+  <object id="75" x="256.333" y="1568.67" width="31.5" height="30.5"/>
+  <object id="76" x="225.167" y="1665.5" width="31" height="30.5"/>
+  <object id="79" x="289.167" y="1697.33" width="31" height="30.5"/>
+  <object id="80" x="224.333" y="1728.33" width="31.5" height="31"/>
+  <object id="81" x="288.667" y="1760.67" width="31.5" height="31.5"/>
+  <object id="83" x="192.333" y="1793.17" width="63" height="31.5"/>
+  <object id="85" x="96.6667" y="1887.17" width="31.5" height="33"/>
+  <object id="86" x="65.1667" y="1793.17" width="31" height="31"/>
+  <object id="87" x="65.6667" y="1729.17" width="30" height="31"/>
+  <object id="88" x="96.6667" y="1632.17" width="32" height="64"/>
+  <object id="89" x="128" y="1568.17" width="32" height="31"/>
+  <object id="90" x="64.6667" y="1504.17" width="31" height="31.5"/>
+  <object id="91" x="224.667" y="1472.67" width="31.5" height="31"/>
+  <object id="92" x="256.5" y="1378.33" width="31" height="29.5"/>
+  <object id="93" x="96.6667" y="1440.17" width="31.5" height="31.5"/>
+  <object id="94" x="65" y="1345.67" width="63" height="30.5"/>
+  <object id="96" x="127.667" y="1247.83" width="33.5" height="32.5"/>
+  <object id="97" x="64.1667" y="1249.17" width="31.5" height="31"/>
+  <object id="98" x="288.333" y="1248.33" width="31.3333" height="31.3333"/>
+  <object id="99" x="289.167" y="1312" width="31" height="31.5"/>
+  <object id="102" x="96.1667" y="1152.67" width="32" height="64"/>
+  <object id="103" x="160.667" y="1184.83" width="31.5" height="31"/>
+  <object id="104" x="160.833" y="1088.83" width="31" height="31"/>
+  <object id="105" x="97.1667" y="1025.17" width="30.5" height="62.5"/>
+  <object id="106" x="192.333" y="992.667" width="31" height="30.5"/>
+  <object id="107" x="64.5" y="896.5" width="31.5" height="31"/>
+  <object id="109" x="160.333" y="897.167" width="128" height="31"/>
+  <object id="111" x="385.667" y="898" width="30.5" height="30"/>
+  <object id="112" x="416.667" y="1152.5" width="31" height="30.5"/>
+  <object id="116" x="480" y="1152.67" width="32" height="31.5"/>
+  <object id="117" x="544.667" y="1152.83" width="31" height="31"/>
+  <object id="118" x="608" y="1152.33" width="32" height="31"/>
+  <object id="119" x="895.833" y="1152.83" width="32" height="31"/>
+  <object id="120" x="1153.17" y="1152.33" width="31.5" height="31"/>
+  <object id="121" x="1248.33" y="1152.83" width="31.5" height="30.5"/>
+  <object id="122" x="1088.33" y="1184.83" width="31.5" height="62.5"/>
+  <object id="129" x="1184.67" y="1376.67" width="31" height="31.5"/>
+  <object id="130" x="1056.67" y="1408.83" width="32.5" height="31.5"/>
+  <object id="131" x="992" y="1472" width="32.6667" height="64.6667"/>
+  <object id="132" x="1056.33" y="1472.83" width="64" height="31"/>
+  <object id="133" x="1120.67" y="1537.17" width="31.5" height="30.5"/>
+  <object id="134" x="671.667" y="897.167" width="31.5" height="30"/>
+  <object id="135" x="801" y="897.333" width="30.5" height="31"/>
+  <object id="136" x="896.167" y="896.833" width="33" height="32"/>
+  <object id="138" x="1217.17" y="928.833" width="31" height="63"/>
+  <object id="139" x="1120.33" y="768.833" width="31.5" height="30.5"/>
+  <object id="141" x="864.333" y="672.667" width="31.5" height="62.75"/>
+  <object id="142" x="928.667" y="608.667" width="32" height="31.5"/>
+  <object id="145" x="993.167" y="480.167" width="30" height="31"/>
+  <object id="146" x="929.167" y="481.167" width="30" height="30"/>
+  <object id="147" x="767.667" y="480.333" width="64.6667" height="32.3333"/>
+  <object id="149" x="480" y="480.667" width="32" height="31"/>
+  <object id="150" x="415.667" y="640.667" width="64.3333" height="31.6667"/>
+  <object id="152" x="512.333" y="704.667" width="31.6667" height="31.3333"/>
+  <object id="153" x="416" y="704.333" width="64.3333" height="31.3333"/>
+  <object id="154" x="224.333" y="672" width="32.3333" height="31.3333"/>
+  <object id="156" x="288" y="672.333" width="96.3333" height="32"/>
+  <object id="157" x="128.667" y="672.667" width="31" height="31.3333"/>
+  <object id="158" x="192.667" y="608" width="31.3333" height="32"/>
+  <object id="160" x="128.333" y="543.667" width="31.3333" height="32"/>
+  <object id="162" x="63.6667" y="448" width="32.6667" height="32"/>
+  <object id="163" x="289" y="480.667" width="127" height="31"/>
+  <object id="164" x="63.6667" y="128" width="32" height="31.6667"/>
+  <object id="165" x="95.6667" y="256.667" width="32.6667" height="31.3333"/>
+  <object id="166" x="96" y="320.333" width="32" height="32"/>
+  <object id="168" x="159.333" y="224.333" width="33.3333" height="32"/>
+  <object id="170" x="160" y="128.667" width="96.3333" height="31.6667"/>
+  <object id="171" x="287.667" y="255.667" width="64.6667" height="33.3333"/>
+  <object id="173" x="448.667" y="288.667" width="31.6667" height="30.6667"/>
+  <object id="176" x="672.667" y="255.667" width="63.3333" height="31.3333"/>
+  <object id="178" x="767" y="256.333" width="33.3333" height="31.6667"/>
+  <object id="180" x="864.333" y="223.667" width="32" height="33"/>
+  <object id="182" x="928" y="191.333" width="32.3333" height="33"/>
+  <object id="183" x="960" y="256.667" width="33" height="63.6667"/>
+  <object id="185" x="1024" y="255.667" width="32.6667" height="33"/>
+  <object id="187" x="1088.33" y="129" width="31.6667" height="30.6667"/>
+  <object id="190" x="1312.33" y="128" width="32" height="31.6667"/>
+  <object id="192" x="1408.33" y="160.667" width="95.6667" height="30.6667"/>
+  <object id="194" x="1536.33" y="161.333" width="31.6667" height="30.3333"/>
+  <object id="197" x="1696" y="128.333" width="32.6667" height="63.3333"/>
+  <object id="198" x="1824" y="128.333" width="63.6667" height="31.6667"/>
+  <object id="199" x="1951.67" y="127.333" width="32.3333" height="32"/>
+  <object id="200" x="1952" y="320" width="32.6667" height="64.6667"/>
+  <object id="202" x="1952" y="415.333" width="32.6667" height="65.3333"/>
+  <object id="205" x="1824" y="480.333" width="32.6667" height="32.3333"/>
+  <object id="206" x="1344.67" y="320.333" width="31" height="32"/>
+  <object id="208" x="1280.67" y="384.667" width="31.6667" height="31.6667"/>
+  <object id="209" x="1375.67" y="384.333" width="32.3333" height="32.6667"/>
+  <object id="210" x="1344" y="479.333" width="32.6667" height="32.6667"/>
+  <object id="212" x="1440" y="416.667" width="32" height="94.3333"/>
+  <object id="215" x="1504.33" y="480.333" width="63.6667" height="31.3333"/>
+  <object id="216" x="1378.17" y="674" width="29" height="28.5"/>
+  <object id="220" x="1504.5" y="673.667" width="95.5" height="29.5"/>
+  <object id="221" x="1631.67" y="673.667" width="33" height="62"/>
+  <object id="222" x="1505.33" y="736.167" width="94.5" height="32"/>
+  <object id="224" x="1472.67" y="800.833" width="31" height="31"/>
+  <object id="225" x="1375.33" y="928.833" width="33" height="30"/>
+  <object id="226" x="1440.5" y="864.167" width="31.5" height="31.5"/>
+  <object id="227" x="1536.83" y="864.833" width="31" height="30.5"/>
+  <object id="228" x="1600.33" y="833.333" width="31.5" height="30"/>
+  <object id="229" x="1664.17" y="1024.83" width="32" height="31.5"/>
+  <object id="230" x="1408" y="1023.67" width="32" height="32"/>
+  <object id="233" x="1440.67" y="1088" width="95.3333" height="31.6667"/>
+  <object id="237" x="1472" y="1152" width="32.3333" height="32"/>
+  <object id="239" x="1471.67" y="1248.33" width="32.6667" height="63.6667"/>
+  <object id="240" x="1407.67" y="1280.67" width="32.3333" height="127.667"/>
+  <object id="242" x="1471.67" y="1344.33" width="32.6667" height="63.3333"/>
+  <object id="245" x="1536" y="1344.67" width="32.3333" height="127.667"/>
+  <object id="246" x="1376.33" y="1441" width="31.3333" height="31.3333"/>
+  <object id="256" x="416" y="1248.33">
+   <polygon points="0.666667,-0.333333 63.6667,-0.333333 64,31.6667 32.3333,32 32,64.3333 0.333333,64"/>
+  </object>
+  <object id="257" x="992" y="1312">
+   <polygon points="0,0 64,0.333333 64,63.6667 128,64 128.333,32.6667 96.3333,32 96.6667,-31.3333 64,-31.6667 64.3333,-63.6667 32,-63.3333 32,-32 0,-31.6667"/>
+  </object>
+  <object id="259" x="2006" y="543">
+   <polyline points="0,0 -694,1 -695,480 -1655,481 -1655,1278 -1623,1279 -1623,576 -695,578 -694,1087 -374,1089 -373,510 -406,512 -406,991 -662,991 -661,96 9,98 9,1407 -1973,1407 -1974,321 -918,322 -919,-191 -1719,-191 -1718,-97 -952,-95 -949,223 -1974,224 -1974,-449 8,-447 10,-1"/>
+  </object>
+ </objectgroup>
  <objectgroup id="5" name="gameObjects">
-  <object id="8" gid="18" x="1507" y="1421" width="32" height="32"/>
-  <object id="9" gid="18" x="961" y="543" width="32" height="32"/>
-  <object id="10" gid="18" x="1210" y="1219" width="32" height="32"/>
+  <object id="123" gid="18" x="1254" y="1208.67" width="32" height="32">
+   <properties>
+    <property name="type" value="PAPER"/>
+   </properties>
+  </object>
+  <object id="248" gid="18" x="1505.33" y="1406" width="32" height="32">
+   <properties>
+    <property name="type" value="PAPER"/>
+   </properties>
+  </object>
+  <object id="249" gid="18" x="967.333" y="516.667" width="32" height="32"/>
+  <object id="261" gid="37" x="128" y="191.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="262" gid="37" x="160.5" y="191.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="263" gid="37" x="95.5" y="288.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="265" gid="37" x="159.5" y="159.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="266" gid="37" x="192.5" y="160" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="268" gid="37" x="224" y="160.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="269" gid="37" x="448" y="287.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="270" gid="37" x="480.5" y="288" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="273" gid="37" x="512.5" y="288" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="274" gid="37" x="544" y="287.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="275" gid="37" x="576" y="320" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="277" gid="37" x="608" y="319.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="278" gid="37" x="640" y="320" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="279" gid="37" x="831.5" y="224.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="280" gid="37" x="864.5" y="256" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="281" gid="37" x="896" y="128" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="282" gid="37" x="1183.5" y="128.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="283" gid="37" x="1216" y="128" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="284" gid="37" x="1248" y="128.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="285" gid="37" x="1280" y="159.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="286" gid="37" x="1280.5" y="192" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="287" gid="37" x="1376" y="128" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="288" gid="37" x="1408" y="128" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="289" gid="37" x="1440" y="128.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="290" gid="37" x="1568" y="128" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="291" gid="37" x="1568" y="160" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="292" gid="37" x="1600" y="127.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="293" gid="37" x="1632" y="128" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="294" gid="37" x="1728.5" y="128" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="295" gid="37" x="1439.5" y="448.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="296" gid="37" x="1472" y="448.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="297" gid="37" x="1439.5" y="480" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="298" gid="37" x="1472" y="480" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="299" gid="37" x="1504" y="480.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="300" gid="37" x="1440.5" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="301" gid="37" x="1504" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="302" gid="37" x="1537" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="303" gid="37" x="1344" y="511.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="304" gid="37" x="1312.5" y="416" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="305" gid="37" x="1344.5" y="352" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="306" gid="37" x="1504" y="705" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="307" gid="37" x="1535.5" y="703.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="308" gid="37" x="1568" y="703.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="309" gid="37" x="1408.5" y="735.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="310" gid="37" x="1472.17" y="735.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="311" gid="37" x="1408" y="767.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="312" gid="37" x="1376" y="959.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="313" gid="37" x="256.5" y="895.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="314" gid="37" x="256.5" y="928" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="315" gid="37" x="225" y="928" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="316" gid="37" x="192.5" y="928" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="317" gid="37" x="160" y="928.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="318" gid="37" x="191.5" y="960" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="319" gid="37" x="160" y="960" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="320" gid="37" x="96.5" y="1055.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="321" gid="37" x="64" y="1119.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="322" gid="37" x="64" y="1152" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="323" gid="37" x="63.5" y="1184" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="324" gid="37" x="96" y="1184" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="325" gid="37" x="95.5" y="1216" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="326" gid="37" x="63.5" y="1280" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="327" gid="37" x="159.5" y="1344.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="328" gid="37" x="287.5" y="1279.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="329" gid="37" x="320.5" y="1183.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="330" gid="37" x="480" y="1183.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="331" gid="37" x="415.5" y="1280.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="332" gid="37" x="448" y="1280" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="333" gid="37" x="608" y="1183.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="334" gid="37" x="895.5" y="1184.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="335" gid="37" x="1024" y="1280" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="336" gid="37" x="991.5" y="1312" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="337" gid="37" x="1024" y="1312.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="338" gid="37" x="1056.5" y="1312" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="339" gid="37" x="1056.5" y="1344" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="340" gid="37" x="1056.5" y="1375.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="341" gid="37" x="1088" y="1376" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="342" gid="37" x="1184" y="1408" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="343" gid="37" x="1088.5" y="1216.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="344" gid="37" x="1088" y="1248.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="345" gid="37" x="992" y="1504.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="346" gid="37" x="1024.5" y="1664.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="347" gid="37" x="1088" y="1631" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="348" gid="37" x="1087.5" y="1663.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="349" gid="37" x="1120.5" y="1664" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="350" gid="37" x="1120.5" y="1696" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="351" gid="37" x="1120" y="1728" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="352" gid="37" x="1151.5" y="1728" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="353" gid="37" x="1216.5" y="1663.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="354" gid="37" x="1247.5" y="1664.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="355" gid="37" x="1280" y="1697" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="356" gid="37" x="1279.5" y="1887.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="357" gid="37" x="1343.5" y="1856" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="358" gid="37" x="1376.5" y="1855.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="359" gid="37" x="1472" y="1727.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="360" gid="37" x="1472.5" y="1696" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="361" gid="37" x="1504" y="1792" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="362" gid="37" x="1632" y="1855.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="363" gid="37" x="1696" y="1791.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="364" gid="37" x="1727.5" y="1792.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="365" gid="37" x="1728.5" y="1760" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="366" gid="37" x="1760" y="1728.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="367" gid="37" x="1921" y="1760" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="368" gid="37" x="1920" y="1728.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="369" gid="37" x="1920.5" y="1695.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="370" gid="37" x="1888" y="1696.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="371" gid="37" x="1888.5" y="1664" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="372" gid="37" x="1888" y="1632" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="373" gid="37" x="1855.5" y="1567.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="374" gid="37" x="1919.5" y="1440" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="375" gid="37" x="1920.5" y="1407.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="376" gid="37" x="1728" y="1504" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="377" gid="37" x="1695.5" y="1505" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="378" gid="37" x="1729" y="1472" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="379" gid="37" x="1760.5" y="1440" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="380" gid="37" x="1760" y="1407.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="381" gid="37" x="1759.5" y="1376.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="382" gid="37" x="1760" y="1345" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="383" gid="37" x="1920.5" y="1280" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="384" gid="37" x="1728.5" y="1215.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="385" gid="37" x="1919.5" y="1056" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="386" gid="37" x="1888" y="1024" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="387" gid="37" x="1888.5" y="991.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="388" gid="37" x="1919.5" y="959.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="389" gid="37" x="1920.5" y="928" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="390" gid="37" x="1951.5" y="864.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="391" gid="37" x="1088" y="1920" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="392" gid="37" x="992" y="1888.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="393" gid="37" x="960" y="1920.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="394" gid="37" x="800" y="1824.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="395" gid="37" x="928" y="1760" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="396" gid="37" x="672.5" y="1760" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="397" gid="37" x="607.5" y="1760.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="398" gid="37" x="639.5" y="1760" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="399" gid="37" x="609" y="1728" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="400" gid="37" x="544.5" y="1888" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="401" gid="37" x="480" y="1856" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="402" gid="37" x="512" y="1855.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="403" gid="37" x="544" y="1728.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="404" gid="37" x="448" y="1696" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="405" gid="37" x="128.5" y="1888.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="406" gid="37" x="223.5" y="1824.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="407" gid="37" x="191.5" y="1825" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="408" gid="37" x="224" y="1759.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="409" gid="37" x="64.5" y="1759.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="410" gid="37" x="96.5" y="1696.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="411" gid="37" x="96.5" y="1664" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="412" gid="37" x="128" y="1600" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="413" gid="37" x="224" y="1504.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="414" gid="37" x="512" y="737" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="415" gid="37" x="512" y="704.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="416" gid="37" x="479.5" y="704" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="417" gid="37" x="448.5" y="672" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="418" gid="37" x="288" y="671.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="419" gid="37" x="255.5" y="672.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="420" gid="37" x="127.5" y="703.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="421" gid="37" x="192" y="640" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="422" gid="37" x="927.5" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="423" gid="37" x="992" y="608.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="424" gid="37" x="992" y="640" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="425" gid="37" x="1024" y="640" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="426" gid="37" x="1024" y="672" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="427" gid="11" x="1376.5" y="704" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="428" gid="11" x="1952.5" y="704" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="429" gid="11" x="1248" y="1184" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="430" gid="11" x="416.5" y="1183.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="431" gid="11" x="64.5" y="928.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="432" gid="11" x="992" y="511.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="433" gid="11" x="64" y="160" width="32" height="32"/>
+  <object id="434" gid="11" x="1952.5" y="160" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="436" gid="27" x="896" y="928.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="437" gid="27" x="671.333" y="927.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="438" gid="27" x="927.333" y="768.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="439" gid="27" x="1024" y="705.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="440" gid="27" x="928" y="640.667" width="32" height="32"/>
+  <object id="441" gid="27" x="832" y="544.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="442" gid="27" x="448" y="736.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="443" gid="27" x="415.333" y="736" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="444" gid="27" x="416" y="672.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="445" gid="27" x="96.6667" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="446" gid="27" x="95.3333" y="353.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="447" gid="27" x="160" y="256" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="448" gid="27" x="288" y="288.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="449" gid="27" x="320" y="288.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="450" gid="27" x="352.667" y="255.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="451" gid="27" x="448" y="320" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="452" gid="27" x="672" y="288" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="453" gid="27" x="704" y="288" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="454" gid="27" x="927.333" y="224" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="455" gid="27" x="960" y="288" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="456" gid="27" x="960" y="320" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="459" gid="27" x="1024" y="288.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="460" gid="27" x="1088" y="160" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="461" gid="27" x="1504" y="160" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="462" gid="27" x="1536" y="192" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="463" gid="27" x="1472" y="192" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="464" gid="27" x="1439.33" y="192" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="465" gid="27" x="1823.33" y="159.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="466" gid="27" x="1856" y="159.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="467" gid="27" x="1920" y="416.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="468" gid="27" x="1919.33" y="512.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="469" gid="27" x="1952" y="480" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="470" gid="27" x="1824" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="471" gid="27" x="1824" y="704.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="472" gid="27" x="1632.67" y="704" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="473" gid="27" x="1632" y="735.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="474" gid="27" x="1599.33" y="864" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="475" gid="27" x="1344" y="800" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="476" gid="27" x="1664" y="1056" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="477" gid="27" x="1760" y="1312.67" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="478" gid="27" x="1726.67" y="1311.33" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="479" gid="27" x="1695.33" y="1408" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="480" gid="27" x="1918.67" y="1503.33" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="481" gid="27" x="1920" y="1600" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="482" gid="27" x="1854.67" y="1726.67" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="483" gid="27" x="1216.67" y="1887.33" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="484" gid="27" x="1183.33" y="1855.33" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="485" gid="27" x="1152.67" y="1632" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="486" gid="27" x="1056" y="1440" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="487" gid="27" x="992.667" y="1535.33" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="488" gid="27" x="1152" y="1184" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="489" gid="27" x="544" y="1184" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="490" gid="27" x="480" y="1248" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="491" gid="27" x="416" y="1312.67" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="492" gid="27" x="414.667" y="1598.67" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="493" gid="27" x="575.333" y="1823.33" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="494" gid="27" x="639.333" y="1728" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="495" gid="27" x="927.333" y="1856" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="496" gid="27" x="320" y="1856" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="497" gid="27" x="95.3333" y="1920.67" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="498" gid="27" x="288" y="1791.33" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="499" gid="27" x="286.667" y="1727.33" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="500" gid="27" x="224" y="1696.67" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="501" gid="27" x="64" y="1536" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="502" gid="27" x="254.667" y="1408" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="503" gid="27" x="286.667" y="1344" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="504" gid="27" x="160.667" y="1312.67" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="505" gid="27" x="95.3333" y="1376.67" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="506" gid="27" x="160" y="1216" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="507" gid="27" x="159.333" y="1120" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="508" gid="27" x="96.6667" y="1088" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="509" gid="27" x="191.333" y="1024" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="510" gid="27" x="383.333" y="927.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="511" gid="27" x="1375.33" y="414.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="512" gid="27" x="1280.67" y="415.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="514" gid="14" x="1216" y="960" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="515" gid="14" x="1216.5" y="991" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="516" gid="14" x="1247.5" y="928" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="517" gid="14" x="1408" y="799.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="518" gid="14" x="1472" y="799.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="519" gid="14" x="1504" y="800" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="520" gid="14" x="1472" y="831.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="521" gid="14" x="1440.5" y="895.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="522" gid="14" x="1536" y="896" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="523" gid="14" x="1504" y="768" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="524" gid="14" x="1536" y="768" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="525" gid="14" x="1567.5" y="767.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="526" gid="14" x="1759.5" y="704" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="527" gid="14" x="1855.5" y="1056" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="528" gid="14" x="1920" y="1088" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="529" gid="14" x="1888" y="1120" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="530" gid="14" x="1824" y="1791.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="531" gid="14" x="1759.5" y="1791.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="532" gid="14" x="1759.5" y="1823.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="533" gid="14" x="1759.5" y="1855" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="534" gid="14" x="1695.5" y="1919.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="535" gid="14" x="1344" y="1823.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="536" gid="14" x="1343.5" y="1791.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="537" gid="14" x="1247" y="1791" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="538" gid="14" x="992.5" y="1856" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="539" gid="14" x="959.5" y="1856.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="540" gid="14" x="1120" y="1568" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="541" gid="14" x="1056" y="1503.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="542" gid="14" x="1088" y="1503.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="543" gid="14" x="1375.5" y="1471.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="544" gid="14" x="1408" y="1504" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="545" gid="14" x="1439.5" y="1503.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="546" gid="14" x="1471.5" y="1504" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="547" gid="14" x="1503.5" y="1504" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="548" gid="14" x="1536" y="1471.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="549" gid="14" x="1536" y="1439.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="550" gid="14" x="1536" y="1407.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="551" gid="14" x="1535.5" y="1376.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="552" gid="14" x="1503.5" y="1376" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="553" gid="14" x="1471.5" y="1376" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="554" gid="14" x="1472" y="1407.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="555" gid="14" x="1440" y="1407.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="556" gid="14" x="1407.5" y="1407.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="557" gid="14" x="1407" y="1376" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="558" gid="14" x="1408" y="1343.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="559" gid="14" x="1407.5" y="1311.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="560" gid="14" x="1440" y="1344" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="561" gid="14" x="1472" y="1312" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="562" gid="14" x="1471.5" y="1279.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="563" gid="14" x="1504" y="1280" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="564" gid="14" x="1504" y="1248" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="565" gid="14" x="1504" y="1216" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="566" gid="14" x="1504.5" y="1184" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="567" gid="14" x="1472" y="1184" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="568" gid="14" x="1408" y="1215.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="569" gid="14" x="1376" y="1216.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="570" gid="14" x="1344" y="1216" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="571" gid="14" x="1376" y="1184" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="572" gid="14" x="1408" y="1183.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="573" gid="14" x="1408" y="1151.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="574" gid="14" x="1504.5" y="1119.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="575" gid="14" x="1472" y="1120" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="576" gid="14" x="1440" y="1119.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="577" gid="14" x="1440" y="1087.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="578" gid="14" x="1439.5" y="1056" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="579" gid="14" x="1407.5" y="1055.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="580" gid="14" x="1888.5" y="544" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="581" gid="14" x="1952" y="447.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="582" gid="14" x="1951.5" y="384" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="583" gid="14" x="1952" y="351.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="584" gid="14" x="1697" y="191.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="585" gid="14" x="1696" y="159.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="586" gid="14" x="1407.5" y="192" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="587" gid="37" x="1311.5" y="160.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="588" gid="14" x="1408" y="447.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="589" gid="14" x="1312" y="447.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="590" gid="14" x="1312" y="384" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="591" gid="14" x="767.5" y="288" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="592" gid="14" x="704" y="127" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="593" gid="14" x="672" y="127.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="594" gid="14" x="128.5" y="319.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="595" gid="14" x="64" y="480" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="596" gid="14" x="128" y="576" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="597" gid="14" x="287.5" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="598" gid="14" x="320" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="599" gid="14" x="351.5" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="600" gid="14" x="383.5" y="512.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="601" gid="14" x="480" y="512" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="602" gid="14" x="352" y="704" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="603" gid="14" x="320.5" y="704" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="604" gid="14" x="288" y="704" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="605" gid="14" x="224" y="703.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="606" gid="14" x="127.5" y="960" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="607" gid="14" x="96" y="960.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="608" gid="14" x="128" y="1279.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="609" gid="14" x="64" y="1376" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="610" gid="14" x="96.5" y="1471" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="611" gid="14" x="255.5" y="1600.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="612" gid="14" x="64" y="1823.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="613" gid="14" x="448" y="1823" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="614" gid="14" x="480" y="1823.5" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="615" gid="14" x="480" y="1792" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="616" gid="14" x="862" y="703.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="617" gid="14" x="862" y="736" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="618" gid="14" x="798" y="928.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="619" gid="14" x="1118" y="800" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="620" gid="14" x="798" y="511.333" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
+  <object id="621" gid="14" x="765.333" y="512.667" width="32" height="32">
+   <properties>
+    <property name="type" value="GAME_OBJECTS"/>
+   </properties>
+  </object>
  </objectgroup>
  <objectgroup id="6" name="playerStartLocation">
   <object id="1" x="1770.14" y="318.578">

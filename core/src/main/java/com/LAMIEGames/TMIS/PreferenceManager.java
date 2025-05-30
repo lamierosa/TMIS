@@ -2,6 +2,7 @@ package com.LAMIEGames.TMIS;
 
 import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.ecs.components.B2DComponent;
+import com.LAMIEGames.TMIS.ecs.components.PlayerComponent;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Preferences;
@@ -15,14 +16,14 @@ public class PreferenceManager implements Json.Serializable{
     private final Preferences preferences;
     private final Json json;
     private final JsonReader jsonReader;
+    private int paperCollected;
 
     private final Vector2 playerPos;
 
     public PreferenceManager() {
-        preferences = Gdx.app.getPreferences("ThisMorningInSamsara");
+        preferences = Gdx.app.getPreferences("LAMIEGames_Preferences");
         json = new Json();
         jsonReader = new JsonReader();
-
         playerPos = new Vector2();
     }
 
@@ -41,9 +42,11 @@ public class PreferenceManager implements Json.Serializable{
 
     public void saveGameState(final Entity player) {
 
-        // только координаты. добавить карту и наличие бумажек, еще день
         playerPos.set(ECSEngine.box2dCmpMapper.get(player).body.getPosition());
+        paperCollected = ECSEngine.playerCmpMapper.get(player).paperCount;
+
         preferences.putString("GAME_STATE", new Json().toJson(this));
+
         preferences.flush();
     }
 
@@ -52,8 +55,10 @@ public class PreferenceManager implements Json.Serializable{
 
         // только координаты. добавить карту и наличие бумажек, еще день
         final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(player);
-        b2DComponent.body.setTransform(savedJsonStr.getFloat("PLAYER_X", 0f),
-            savedJsonStr.getFloat("PLAYER_Y", 0f), b2DComponent.body.getAngle());
+        b2DComponent.body.setTransform(savedJsonStr.getFloat("PLAYER_X",
+            0f),savedJsonStr.getFloat("PLAYER_Y", 0f),b2DComponent.body.getAngle());
+        final PlayerComponent playerComponent = ECSEngine.playerCmpMapper.get(player);
+        playerComponent.paperCount = savedJsonStr.getInt("PAPER_COLLECTED", 0);
 
     }
 
@@ -61,6 +66,7 @@ public class PreferenceManager implements Json.Serializable{
     public void write(Json json) {
         json.writeValue("PLAYER_X", playerPos.x);
         json.writeValue("PLAYER_Y", playerPos.y);
+        json.writeValue("PAPER_COLLECTED", paperCollected);
     }
 
     @Override

@@ -13,6 +13,7 @@ import com.LAMIEGames.TMIS.ecs.components.B2DComponent;
 import com.LAMIEGames.TMIS.ecs.components.GameObjectComponent;
 import com.LAMIEGames.TMIS.ecs.components.PlayerComponent;
 import com.LAMIEGames.TMIS.ecs.system.AnimationSystem;
+import com.LAMIEGames.TMIS.ecs.system.LightingSystem;
 import com.LAMIEGames.TMIS.ecs.system.PlayerAnimationSystem;
 import com.LAMIEGames.TMIS.ecs.system.PlayerCameraSystem;
 import com.LAMIEGames.TMIS.ecs.system.PlayerCollisionSystem;
@@ -22,12 +23,16 @@ import com.LAMIEGames.TMIS.view.AnimationType;
 import com.badlogic.ashley.core.ComponentMapper;
 import com.badlogic.ashley.core.Entity;
 import com.badlogic.ashley.core.PooledEngine;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+
+import box2dLight.PointLight;
+import box2dLight.RayHandler;
 
 public class ECSEngine extends PooledEngine {
     public static final ComponentMapper<PlayerComponent> playerCmpMapper =
@@ -39,7 +44,7 @@ public class ECSEngine extends PooledEngine {
     public static final ComponentMapper<GameObjectComponent> gameObjCmpMapper =
         ComponentMapper.getFor(GameObjectComponent.class);
 
-
+    private final RayHandler rayHandler;
     private final BodyDef bodyDef;
     private final FixtureDef fixtureDef;
     private final Vector2 localPosition;
@@ -53,6 +58,7 @@ public class ECSEngine extends PooledEngine {
         super();
 
         world = context.getWorld();
+        rayHandler = context.getRayHandler();
         bodyDef = context.BODY_DEF;
         fixtureDef = context.FIXTURE_DEF;
 
@@ -65,6 +71,7 @@ public class ECSEngine extends PooledEngine {
         this.addSystem(new AnimationSystem(context));
         this.addSystem(new PlayerAnimationSystem(context));
         this.addSystem(new PlayerCollisionSystem(context));
+        this.addSystem(new LightingSystem());
     }
 
     public Entity createPlayer(Vector2 playerSpawnLocation, final float width, final float height) {
@@ -72,7 +79,7 @@ public class ECSEngine extends PooledEngine {
 
         //player component
         final PlayerComponent playerComponent = this.createComponent(PlayerComponent.class);
-        playerComponent.speed.set(3,3);
+        playerComponent.speed.set(4,4);
         player.add(playerComponent);
 
         //box2d component
@@ -91,15 +98,23 @@ public class ECSEngine extends PooledEngine {
         fixtureDef.filter.categoryBits = BIT_PLAYER;
         fixtureDef.filter.maskBits = BIT_GROUND| BIT_GAME_OBJECT;
         final PolygonShape polygonShape = new PolygonShape();
-        polygonShape.setAsBox(0.5f, 0.5f);
+        polygonShape.setAsBox(0.25f, 0.25f);
         fixtureDef.shape = polygonShape;
         b2DComponent.body.createFixture(fixtureDef);
         polygonShape.dispose();
+
+        b2DComponent.lightDistance = 6;
+        b2DComponent.lightFluctuationSpeed = 4;
+        b2DComponent.light = new PointLight(rayHandler,64,new Color().set(1,1,1,0.7f), b2DComponent.lightDistance, b2DComponent.body.getPosition().x,b2DComponent.body.getPosition().y);
+        b2DComponent.lightFluctuationDistance = b2DComponent.light.getDistance()*0.16f;
+        b2DComponent.light.setSoft(true);
+        b2DComponent.light.attachToBody(b2DComponent.body);
+
         player.add(b2DComponent);
 
         //animation component
         final AnimationComponent animationComponent = this.createComponent(AnimationComponent.class);
-        animationComponent.animationType = AnimationType.PLAYER_RIGHT;
+        animationComponent.animationType = AnimationType.PLAYER_LEFT;
         animationComponent.width = 32 * UNIT_SCALE * 0.75f;
         animationComponent.height = 32 * UNIT_SCALE * 0.75f;
         player.add(animationComponent);

@@ -37,6 +37,8 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import java.util.EnumMap;
 
+import box2dLight.RayHandler;
+
 public class GameRenderer implements Disposable, MapListener {
     public static final String TAG = GameRenderer.class.getSimpleName();
 
@@ -56,6 +58,7 @@ public class GameRenderer implements Disposable, MapListener {
     private final Box2DDebugRenderer box2DDebugRenderer;
     private final World world;
     private IntMap<Animation<Sprite>> mapAnimations;
+    private final RayHandler rayHandler;
 
     public GameRenderer(final Main context) {
 
@@ -91,6 +94,8 @@ public class GameRenderer implements Disposable, MapListener {
             world = null;
         }
 
+        rayHandler = context.getRayHandler();
+
     }
 
     public void render(final float delta) {
@@ -118,7 +123,8 @@ public class GameRenderer implements Disposable, MapListener {
             final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
         }
         batch.end();
-
+        rayHandler.setCombinedMatrix(gameCamera);
+        rayHandler.updateAndRender();
         profiler.disable();
 
 //        if (profiler.isEnabled()) {

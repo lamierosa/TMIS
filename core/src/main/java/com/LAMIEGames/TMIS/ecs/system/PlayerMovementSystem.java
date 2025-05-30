@@ -19,7 +19,7 @@ public class PlayerMovementSystem extends IteratingSystem implements GameKeyInpu
     public PlayerMovementSystem(final Main context) {
         super(Family.all(PlayerComponent.class, B2DComponent.class).get());
         context.getInputManager().addInputListener(this);
-//        directionChange = false;
+        directionChange = false;
         xFactor = yFactor = 0;
     }
 
@@ -29,7 +29,7 @@ public class PlayerMovementSystem extends IteratingSystem implements GameKeyInpu
             final PlayerComponent playerComponent = ECSEngine.playerCmpMapper.get(entity);
             final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(entity);
 
-//            directionChange = false;
+            directionChange = false;
             b2DComponent.body.applyLinearImpulse(
                 (xFactor * playerComponent.speed.x - b2DComponent.body.getLinearVelocity().x) * b2DComponent.body.getMass(),
                 (yFactor * playerComponent.speed.y - b2DComponent.body.getLinearVelocity().y) * b2DComponent.body.getMass(),

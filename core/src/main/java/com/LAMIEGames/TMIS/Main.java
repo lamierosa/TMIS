@@ -46,8 +46,12 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 
 import java.util.EnumMap;
 
+import box2dLight.RayHandler;
+
 /** {@link com.badlogic.gdx.ApplicationListener} implementation shared by all platforms. */
 public class Main extends Game {
+    private RayHandler rayHandler;
+
     public static final String TAG = (Main.class).getSimpleName();
     private EnumMap<ScreenType, AbstractScreen> screenCache;
     private FitViewport screenViewport;
@@ -95,6 +99,8 @@ public class Main extends Game {
         Box2D.init();
         world = new World(Vector2.Zero, true);
         worldContactListener = new WorldContactListener();
+        rayHandler = new RayHandler(world);
+        rayHandler.setAmbientLight(0.1f);
         world.setContactListener(worldContactListener);
 
         box2DDebugRenderer = new Box2DDebugRenderer();
@@ -124,7 +130,6 @@ public class Main extends Game {
 
         preferenceManager = new PreferenceManager();
         preferences = new AppPreferences();
-
         screenCache = new EnumMap<ScreenType, AbstractScreen>(ScreenType.class);
         try {
             setScreen(ScreenType.MENU);
@@ -134,6 +139,7 @@ public class Main extends Game {
 
         //game renderer
         gameRenderer = new GameRenderer(this);
+
     }
 
     public static void resetBodiesAndFixtureDefinition() {
@@ -246,6 +252,10 @@ public class Main extends Game {
         return this.mapManager;
     }
 
+    public RayHandler getRayHandler() {
+        return rayHandler;
+    }
+
     public void setScreen(final ScreenType screenType) throws ReflectionException {
         final Screen screen = screenCache.get(screenType);
         if (screen == null) {
@@ -292,6 +302,7 @@ public class Main extends Game {
         assetManager.dispose();
         batch.dispose();
         stage.dispose();
+        rayHandler.dispose();
     }
 
 }

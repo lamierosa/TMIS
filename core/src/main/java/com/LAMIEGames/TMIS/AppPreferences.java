@@ -13,7 +13,7 @@ public Preferences getPrefs() {
     private static final String PREF_MUSIC_ENABLED = "music.enabled";
     private static final String PREF_SOUND_ENABLED = "sound.enabled";
     private static final String PREF_SOUND_VOL = "sound";
-    private static final String PREFS_NAME = "preferences";
+    private static final String PREFS_NAME = "LAMIEGames_Preferences";
 
 
     public boolean isSoundEffectsEnabled() {

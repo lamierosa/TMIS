@@ -35,6 +35,8 @@ public class PlayerCollisionSystem extends IteratingSystem implements WorldConta
                 gameObject.add(((ECSEngine) getEngine()).createComponent(RemoveComponent.class));
                 ECSEngine.playerCmpMapper.get(player).paperCount++;
                 break;
+            case GAME_OBJECTS:
+                break;
 //            case DOOR :
 //                teleport = true;
 //                break;
