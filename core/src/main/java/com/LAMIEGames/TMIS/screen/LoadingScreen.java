@@ -1,11 +1,14 @@
 package com.LAMIEGames.TMIS.screen;
 
 import static com.LAMIEGames.TMIS.Main.TAG;
+import static com.LAMIEGames.TMIS.ecs.ECSEngine.player;
 
 import com.LAMIEGames.TMIS.Main;
 import com.LAMIEGames.TMIS.audio.AudioType;
+import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.input.GameKeys;
 import com.LAMIEGames.TMIS.input.InputManager;
+import com.LAMIEGames.TMIS.view.GameUI;
 import com.LAMIEGames.TMIS.view.LoadingUI;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
@@ -81,6 +84,7 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
 //                throw new GdxRuntimeException("Failed to go on MENU screen", e);
 //            }
 //        }
+
         }
 
         @Override

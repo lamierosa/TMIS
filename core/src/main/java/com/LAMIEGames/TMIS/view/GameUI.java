@@ -262,4 +262,10 @@ public class GameUI extends Table {
         paperCount = newItemCount;
         paperCountLabel.setText("Paper Count: " + paperCount + "/3");
     }
+
+    public void resetPaper(int paperCount) {
+        if(paperCount != 0) {
+            paperCount = 0;
+        }
+    }
 }

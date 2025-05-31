@@ -89,6 +89,7 @@ public class Main extends Game {
     private MapManager mapManager;
     private GameRenderer gameRenderer;
 
+
     @Override
     public void create() {
         Gdx.app.setLogLevel(Application.LOG_DEBUG);

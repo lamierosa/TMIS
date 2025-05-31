@@ -6,6 +6,7 @@ import com.LAMIEGames.TMIS.Main;
 import com.LAMIEGames.TMIS.PreferenceManager;
 import com.LAMIEGames.TMIS.audio.AudioManager;
 import com.LAMIEGames.TMIS.audio.AudioType;
+import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.screen.ScreenType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -34,6 +35,7 @@ public class MenuUI extends Table {
     private final PreferenceManager preferenceManager;
     private final AudioManager audioManager;
     private Table mainTable;
+    private GameUI gameUI;
 
     private Main context;
 

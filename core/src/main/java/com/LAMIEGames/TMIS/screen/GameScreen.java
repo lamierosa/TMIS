@@ -18,6 +18,7 @@ import com.badlogic.ashley.core.Entity;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.utils.reflect.ReflectionException;
 
 public class GameScreen extends AbstractScreen implements MapListener {
     //todo: добавить карты на экран
@@ -68,7 +69,13 @@ public class GameScreen extends AbstractScreen implements MapListener {
 //            preferenceManager.loadGameState(player);
 //            System.out.println("loaded");
 //        }
-
+        if(ECSEngine.playerCmpMapper.get(player).paperCount == 3) {
+            try {
+                context.setScreen(ScreenType.WIN);
+            } catch (ReflectionException e) {
+                throw new RuntimeException("Failed to set WINw screen", e);
+            }
+        }
         ((GameUI) screenUI).addPaper(ECSEngine.playerCmpMapper.get(player).paperCount);
 
 //        viewport.apply(true);
