@@ -2,8 +2,16 @@
 
 A [libGDX](https://libgdx.com/) project generated with [gdx-liftoff](https://github.com/libgdx/gdx-liftoff).
 
-This project was generated with a template including simple application launchers and an `ApplicationAdapter` extension that draws libGDX logo.
+This morning in Samsara is a hobby project with LibGDX to create a small puzzle like game. It doesn't present itself as a full-fledged monetized project.
 
+# The Java project uses:
+
+- Ashley ECS
+- Scene2D
+- Box2D
+- Tiled
+- Box2D Light
+  
 ## Platforms
 
 - `core`: Main module with the application logic shared by all platforms.
