@@ -1,6 +1,9 @@
 package com.LAMIEGames.TMIS.view;
 
+import static com.LAMIEGames.TMIS.ecs.ECSEngine.player;
+
 import com.LAMIEGames.TMIS.Main;
+import com.LAMIEGames.TMIS.PreferenceManager;
 import com.LAMIEGames.TMIS.input.GameKeys;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.NinePatch;
@@ -16,6 +19,7 @@ public class LoadingUI extends Table {
     private final TextButton txtBtn;
     private final ProgressBar progressBar;
     private final TextButton pressAnyKeyBtn;
+    PreferenceManager preferenceManager;
 
     public LoadingUI(final Main context) {
         super(context.getSkin());
@@ -28,6 +32,7 @@ public class LoadingUI extends Table {
 
         txtBtn = new TextButton("Press anywhere", getSkin(), "hugeWhite");
         txtBtn.getLabel().setWrap(true);
+        preferenceManager = new PreferenceManager();
 
         pressAnyKeyBtn = new TextButton("Loading...", getSkin(), "hugeWhite");
         txtBtn.getLabel().setWrap(true);
@@ -35,6 +40,7 @@ public class LoadingUI extends Table {
         txtBtn.addListener(new InputListener() {
             @Override
             public boolean touchDown(InputEvent event, float x, float y, int pointer, int button) {
+                preferenceManager.deleteGameState(player);
                 context.getInputManager().notifyKeyDown(GameKeys.SELECT);
                 return true;
             }

@@ -53,13 +53,17 @@ public class PreferenceManager implements Json.Serializable{
     public void loadGameState(final Entity player) {
         final JsonValue savedJsonStr = jsonReader.parse(preferences.getString("GAME_STATE"));
 
-        // только координаты. добавить карту и наличие бумажек, еще день
         final B2DComponent b2DComponent = ECSEngine.box2dCmpMapper.get(player);
         b2DComponent.body.setTransform(savedJsonStr.getFloat("PLAYER_X",
             0f),savedJsonStr.getFloat("PLAYER_Y", 0f),b2DComponent.body.getAngle());
         final PlayerComponent playerComponent = ECSEngine.playerCmpMapper.get(player);
         playerComponent.paperCount = savedJsonStr.getInt("PAPER_COLLECTED", 0);
 
+    }
+
+    public void deleteGameState(final Entity player) {
+        preferences.remove("GAME_STATE");
+        preferences.flush();
     }
 
     @Override

@@ -15,6 +15,8 @@ import com.LAMIEGames.TMIS.maps.MapManager;
 import com.LAMIEGames.TMIS.maps.MapType;
 import com.LAMIEGames.TMIS.view.GameUI;
 import com.badlogic.ashley.core.Entity;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.math.Vector2;
@@ -61,6 +63,15 @@ public class GameScreen extends AbstractScreen implements MapListener {
 //
 //        Texture texture = new Texture(Gdx.files.internal("map/map.png"));
 
+        if (Gdx.input.isKeyPressed(Input.Keys.CONTROL_LEFT)) {
+            preferenceManager.saveGameState(player);
+            System.out.println("saved");
+        }
+        else if(Gdx.input.isKeyJustPressed(Input.Keys.CONTROL_RIGHT)) {
+            preferenceManager.loadGameState(player);
+            System.out.println("loaded");
+        }
+//
 //        if(Gdx.input.isKeyJustPressed(Input.Keys.P)) {
 //            preferenceManager.saveGameState(player);
 //            System.out.println("saved");
@@ -69,6 +80,7 @@ public class GameScreen extends AbstractScreen implements MapListener {
 //            preferenceManager.loadGameState(player);
 //            System.out.println("loaded");
 //        }
+
         if(ECSEngine.playerCmpMapper.get(player).paperCount == 3) {
             try {
                 context.setScreen(ScreenType.WIN);

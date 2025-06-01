@@ -4,6 +4,7 @@ import static com.LAMIEGames.TMIS.Main.TAG;
 import static com.LAMIEGames.TMIS.ecs.ECSEngine.player;
 
 import com.LAMIEGames.TMIS.Main;
+import com.LAMIEGames.TMIS.PreferenceManager;
 import com.LAMIEGames.TMIS.audio.AudioType;
 import com.LAMIEGames.TMIS.ecs.ECSEngine;
 import com.LAMIEGames.TMIS.input.GameKeys;
@@ -24,10 +25,12 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
     private final AssetManager manager;
     private boolean isMusicLoaded;
     private SpriteBatch batch;
+    private PreferenceManager preferenceManager;
 
     public LoadingScreen(final Main context) {
         super(context);
 
+        preferenceManager = new PreferenceManager();
         this.batch = context.getSpriteBatch();
         this.manager = context.getAssetManager();
 
@@ -123,6 +126,7 @@ public class LoadingScreen extends AbstractScreen<LoadingUI> {
         public void keyPressed (InputManager inputManager, GameKeys gameKeys){
             if (manager.getProgress() >= 1) {
                 try {
+                    preferenceManager.deleteGameState(player);
                     context.setScreen(ScreenType.GAME);
                 } catch (ReflectionException e) {
                     throw new GdxRuntimeException("Failed to go on GAME screen", e);

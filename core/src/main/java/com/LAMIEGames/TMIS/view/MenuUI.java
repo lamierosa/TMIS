@@ -7,6 +7,7 @@ import com.LAMIEGames.TMIS.PreferenceManager;
 import com.LAMIEGames.TMIS.audio.AudioManager;
 import com.LAMIEGames.TMIS.audio.AudioType;
 import com.LAMIEGames.TMIS.ecs.ECSEngine;
+import com.LAMIEGames.TMIS.input.GameKeys;
 import com.LAMIEGames.TMIS.screen.ScreenType;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
@@ -85,7 +86,7 @@ public class MenuUI extends Table {
              @Override
              public void changed(ChangeEvent event, Actor actor) {
                  try {
-                     preferenceManager.loadGameState(player);
+                    context.getInputManager().notifyKeyDown(GameKeys.LOAD);
                     context.setScreen(ScreenType.GAME);
                  } catch (ReflectionException e) {
                     throw new RuntimeException("Failed to load GAME screen", e);

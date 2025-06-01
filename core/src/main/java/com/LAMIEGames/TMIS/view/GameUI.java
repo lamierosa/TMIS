@@ -195,7 +195,7 @@ public class GameUI extends Table {
             public void changed(ChangeEvent event, Actor actor) {
                 showOptionBar(false);
                 try {
-                    preferenceManager.saveGameState(player);
+                    context.getInputManager().notifyKeyDown(GameKeys.SAVE);
                     context.setScreen(ScreenType.MENU);
                 } catch (ReflectionException e) {
                     throw new RuntimeException("Failed to go on MENU", e);
